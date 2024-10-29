@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    [SerializeField] protected CharacterData characterData;
+    [SerializeField] public CharacterData characterData;
     public IMovable movableComponent { get; protected set; }
 
     public ILiveComponent liveComponent { get; protected set; }
@@ -14,16 +14,10 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Start()
     {
-        if (this is PlayerCharacter)
-        {
-            movableComponent = new PlayerMovementComponent();
-        }
-        else if (this is EnemyCharacter)
-        {
-            movableComponent = new EnemyMovementComponent();
-        }
+        movableComponent = new CharacterMovementComponent();
         movableComponent.Initialize(characterData);
     }
+
 
     public abstract void Update();
 }

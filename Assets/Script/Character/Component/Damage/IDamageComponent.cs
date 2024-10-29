@@ -6,5 +6,5 @@ public interface IDamageComponent
 {
     float Damage { get; }
 
-    void MakeDamage(Character character);
+    void MakeDamage(Character characterTarget);
 }
