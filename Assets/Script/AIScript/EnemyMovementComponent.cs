@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class CharacterMovementComponent : IMovable
+public class EnemyMovementComponent : IMovable
 {
     private CharacterData characterData;
     private float speed;
+    private float rotationVelocity = 0f;
+
     public float Speed
     {
         get => speed;
         set => speed = value < 0 ? speed : value;
-
     }
 
     public void Initialize(CharacterData characterData)
@@ -23,24 +23,28 @@ public class CharacterMovementComponent : IMovable
     public void Move(Vector3 direction)
     {
         if (direction == Vector3.zero) return;
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
-        Vector3 move = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-
-        characterData.CharacterController.Move(move * speed * Time.deltaTime);
+        // Используем направление напрямую
+        characterData.CharacterController.Move(direction * speed * Time.deltaTime);
     }
 
     public void Rotation(Vector3 direction)
     {
-        if(direction == Vector3.zero) return;
+        if (direction == Vector3.zero) return;
 
-        float smooth = 0.1f;
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        float angle = Mathf.SmoothDampAngle(characterData.transform.eulerAngles.y, targetAngle, ref smooth, smooth);
+        float angle = Mathf.SmoothDampAngle(
+            characterData.CharacterTransform.eulerAngles.y,
+            targetAngle,
+            ref rotationVelocity,
+            0.1f
+        );
+
+        characterData.CharacterTransform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
     public void Stop()
     {
-
+        // Реализация остановки при необходимости
     }
 }

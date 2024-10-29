@@ -10,4 +10,6 @@ public interface IMovable{
     public void Stop();
 
     public void Rotation(Vector3 direction);
+
+    public void Initialize(CharacterData characterData);
 }
