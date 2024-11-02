@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e781de7503edce345b7731c67f42716a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 60
   timeBetweenAttacks: 1
   characterController: {fileID: 687560909}
   characterTransform: {fileID: 359582933}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e781de7503edce345b7731c67f42716a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 30
   timeBetweenAttacks: 1
   characterController: {fileID: 969592427}
   characterTransform: {fileID: 969592424}
