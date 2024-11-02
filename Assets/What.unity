@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  timeBetweenAttacks: 0
+  timeBetweenAttacks: 1
   characterController: {fileID: 687560909}
   characterTransform: {fileID: 359582933}
 --- !u!1 &969592421
@@ -374,6 +374,7 @@ MonoBehaviour:
   characterData: {fileID: 969592426}
   currentState: 1
   targetCharacter: {fileID: 687560911}
+  attackRange: 7.74
 --- !u!1 &1465298228
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyCharacter : Character
 {
-    [SerializeField] private AiState currentState;
-
+    [SerializeField] private AiState currentState = AiState.MoveToTarget;
     [SerializeField] private Character targetCharacter;
+    [SerializeField] private float attackRange = 2.0f;
 
     private float timeBetweenAttackCounter = 0;
 
     public override void Start()
     {
         base.Start();
-
         liveComponent = new ImmortalLiveComponent();
         damageComponent = new CharacterDamageComponent();
+        inputHandler = new AIInputHandler();
     }
 
     public override void Update()
@@ -26,30 +24,62 @@ public class EnemyCharacter : Character
                 break;
 
             case AiState.MoveToTarget:
-                if (targetCharacter != null) // Добавляем проверку
+                MoveTowardsTarget();
+
+                if (DistanceToTarget() <= attackRange)
                 {
-                    Vector3 direction = targetCharacter.transform.position - transform.position;
-                    direction.Normalize();
+                    currentState = AiState.Attack;
+                }
+                break;
 
-                    movableComponent.Move(direction);
-                    movableComponent.Rotation(direction);
-
-                    if (Vector3.Distance(targetCharacter.transform.position, transform.position) < 3
-                        && timeBetweenAttackCounter <= 0)
-                    {
-                        damageComponent.MakeDamage(targetCharacter);
-                        timeBetweenAttackCounter = characterData.TimeBetweenAttacks;
-                    }
-
-                    if (timeBetweenAttackCounter > 0)
-                        timeBetweenAttackCounter -= Time.deltaTime;
+            case AiState.Attack:
+                if (DistanceToTarget() <= attackRange)
+                {
+                    PerformAttack();
                 }
                 else
                 {
-                    Debug.LogError("targetCharacter is not assigned in EnemyCharacter.");
+                    currentState = AiState.MoveToTarget;
                 }
                 break;
         }
+
+        if (timeBetweenAttackCounter > 0)
+            timeBetweenAttackCounter -= Time.deltaTime;
     }
 
+    private float DistanceToTarget()
+    {
+        if (targetCharacter != null)
+        {
+            return Vector3.Distance(transform.position, targetCharacter.transform.position);
+        }
+        Debug.LogError("EnemyCharacter: targetCharacter is not assigned.");
+        return float.MaxValue;
+    }
+
+    private void MoveTowardsTarget()
+    {
+        if (targetCharacter == null || movableComponent == null) return;
+
+        Vector3 direction = (targetCharacter.transform.position - transform.position).normalized;
+        movableComponent.Move(direction);
+        movableComponent.Rotation(direction);
+    }
+
+    public override void PerformAttack()
+    {
+        if (timeBetweenAttackCounter <= 0)
+        {
+            if (damageComponent != null && targetCharacter != null)
+            {
+                damageComponent.MakeDamage(targetCharacter);
+                timeBetweenAttackCounter = CharacterData.TimeBetweenAttacks; // Используем свойство CharacterData
+            }
+            else
+            {
+                Debug.LogError("EnemyCharacter: damageComponent or targetCharacter is null.");
+            }
+        }
+    }
 }

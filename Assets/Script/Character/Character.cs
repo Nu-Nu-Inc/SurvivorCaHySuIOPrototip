@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    [SerializeField] public CharacterData characterData;
+    [SerializeField] private CharacterData characterData;
+    public CharacterData CharacterData => characterData;
+
     public IMovable movableComponent { get; protected set; }
-
     public ILiveComponent liveComponent { get; protected set; }
-
     public IDamageComponent damageComponent { get; protected set; }
 
+    protected IInputHandler inputHandler;
 
     public virtual void Start()
     {
@@ -18,6 +17,22 @@ public abstract class Character : MonoBehaviour
         movableComponent.Initialize(characterData);
     }
 
-
     public abstract void Update();
+
+    public void HandleInput()
+    {
+        Vector3 movementInput = inputHandler.GetMovementInput();
+        if (movementInput != Vector3.zero)
+        {
+            movableComponent.Move(movementInput);
+            movableComponent.Rotation(movementInput);
+        }
+
+        if (inputHandler.IsAttackButtonPressed())
+        {
+            PerformAttack();
+        }
+    }
+
+    public abstract void PerformAttack();
 }

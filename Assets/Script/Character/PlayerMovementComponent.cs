@@ -16,7 +16,7 @@ public class PlayerMovementComponent : IMovable
     public void Initialize(CharacterData characterData)
     {
         this.characterData = characterData;
-        speed = characterData.DefaultSpeed;
+        speed = characterData.Speed;
     }
 
     public void Move(Vector3 direction)
