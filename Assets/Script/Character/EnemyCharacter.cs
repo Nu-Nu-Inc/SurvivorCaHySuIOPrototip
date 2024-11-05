@@ -8,9 +8,9 @@ public class EnemyCharacter : Character
 
     private float timeBetweenAttackCounter = 0;
 
-    public override void Start()
+    public override void Initialize()
     {
-        base.Start();
+        base.Initialize();
         liveComponent = new ImmortalLiveComponent();
         damageComponent = new CharacterDamageComponent();
         inputHandler = new AIInputHandler();

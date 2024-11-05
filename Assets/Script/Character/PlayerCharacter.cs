@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerCharacter : Character
 {
-    public override void Start()
+    public override void Initialize()
     {
-        base.Start();
+        base.Initialize();
 
         liveComponent = new CharacterLiveComponent();
 

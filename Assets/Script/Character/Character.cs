@@ -2,7 +2,11 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    [SerializeField] private CharacterType characterType;
+
     [SerializeField] private CharacterData characterData;
+
+    public CharacterType CharacterType => characterType;
     public CharacterData CharacterData => characterData;
 
     public IMovable movableComponent { get; protected set; }
@@ -11,7 +15,7 @@ public abstract class Character : MonoBehaviour
 
     protected IInputHandler inputHandler;
 
-    public virtual void Start()
+    public virtual void Initialize()
     {
         movableComponent = new CharacterMovementComponent();
         movableComponent.Initialize(characterData);

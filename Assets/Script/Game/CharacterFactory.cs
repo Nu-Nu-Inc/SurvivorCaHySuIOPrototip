@@ -11,6 +11,10 @@ public class CharacterFactory : MonoBehaviour
 
     private List<Character> activeCharacters = new List<Character>();
 
+    public Character Player { get; private set; }
+
+    public List<Character> ActiveCharacters => activeCharacters;
+
     public Character GetCharacter(CharacterType type)
     {
         Character character = null;
@@ -32,6 +36,14 @@ public class CharacterFactory : MonoBehaviour
         return character;
     }
 
+    public void ReturnCharacter(Character character)
+    {
+        Queue<Character> characters = disabledCharacters[character.CharacterType];
+        characters.Enqueue(character);
+
+        activeCharacters.Remove(character);
+    }
+
     private Character InstantiateCharacter(CharacterType type)
     {
         Character character = null;
@@ -39,6 +51,7 @@ public class CharacterFactory : MonoBehaviour
         {
             case CharacterType.Player:
                 character = GameObject.Instantiate(playerCharacterPrefab);
+                Player = character;
                 break;
             case CharacterType.DefaultEnemy:
                 character = GameObject.Instantiate(enemyCharacterPrefab, null);
