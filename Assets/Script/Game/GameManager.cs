@@ -40,7 +40,9 @@ public class GameManager : MonoBehaviour
 
         Character player = characterFactory.GetCharacter(CharacterType.Player);
         player.transform.position = Vector3.zero;
+        player.Initialize();
 
         isGameActive = true;
     }
+    //52 minutes
 }
