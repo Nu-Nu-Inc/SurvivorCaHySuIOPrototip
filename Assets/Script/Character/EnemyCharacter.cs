@@ -3,10 +3,12 @@ using UnityEngine;
 public class EnemyCharacter : Character
 {
     [SerializeField] private AiState currentState = AiState.MoveToTarget;
-    [SerializeField] private Character targetCharacter;
+    //[SerializeField] private Character targetCharacter;
     [SerializeField] private float attackRange = 2.0f;
 
     private float timeBetweenAttackCounter = 0;
+
+    public override Character CharacterTarget => GameManager.Instance.CharacterFactory.GetCharacter(CharacterType.Player);
 
     public override void Initialize()
     {
@@ -50,9 +52,9 @@ public class EnemyCharacter : Character
 
     private float DistanceToTarget()
     {
-        if (targetCharacter != null)
+        if (CharacterTarget != null)
         {
-            return Vector3.Distance(transform.position, targetCharacter.transform.position);
+            return Vector3.Distance(transform.position, CharacterTarget.transform.position);
         }
         Debug.LogError("EnemyCharacter: targetCharacter is not assigned.");
         return float.MaxValue;
@@ -60,9 +62,9 @@ public class EnemyCharacter : Character
 
     private void MoveTowardsTarget()
     {
-        if (targetCharacter == null || movableComponent == null) return;
+        if (CharacterTarget == null || movableComponent == null) return;
 
-        Vector3 direction = (targetCharacter.transform.position - transform.position).normalized;
+        Vector3 direction = (CharacterTarget.transform.position - transform.position).normalized;
         movableComponent.Move(direction);
         movableComponent.Rotation(direction);
     }
@@ -71,9 +73,9 @@ public class EnemyCharacter : Character
     {
         if (timeBetweenAttackCounter <= 0)
         {
-            if (damageComponent != null && targetCharacter != null)
+            if (damageComponent != null && CharacterTarget != null)
             {
-                damageComponent.MakeDamage(targetCharacter);
+                damageComponent.MakeDamage(CharacterTarget);
                 timeBetweenAttackCounter = CharacterData.TimeBetweenAttacks; // Используем свойство CharacterData
             }
             else

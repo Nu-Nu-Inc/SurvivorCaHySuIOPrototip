@@ -15,7 +15,7 @@ public class ScoreSystem
         PlayerPrefs.GetInt(SAVE_NAME, 0);
     }
 
-    public void endGame()
+    public void EndGame()
     {
         if (Score > MaxScore)
         {
