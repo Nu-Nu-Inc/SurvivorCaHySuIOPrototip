@@ -18,10 +18,10 @@ public class CharacterFactory : MonoBehaviour
 
         if (type == CharacterType.Player)
         {
-            // Создаем игрока только один раз
+            // Создание игрока только один раз
             if (Player == null)
             {
-                Player = InstantiateCharacter(type); // Создаем объект игрока
+                Player = InstantiateCharacter(type); // Создаем игрока
                 Player.Initialize(); // Инициализируем объект сразу после создания
                 activeCharacters.Add(Player);
             }

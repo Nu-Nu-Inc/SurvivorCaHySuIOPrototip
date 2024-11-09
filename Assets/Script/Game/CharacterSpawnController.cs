@@ -32,7 +32,7 @@ public class CharacterSpawnController : MonoBehaviour
         if (timeElapsed >= 60f)
         {
             maxActiveEnemies++;
-            timeElapsed = 0f; // —брасываем таймер дл€ увеличени€ врагов
+            timeElapsed = 0f; // —брасываем тайме
         }
 
         // —павн врагов, если таймер спавна и количество врагов меньше максимального

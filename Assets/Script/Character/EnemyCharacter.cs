@@ -77,7 +77,7 @@ public class EnemyCharacter : Character
             if (damageComponent != null && CharacterTarget != null)
             {
                 damageComponent.MakeDamage(CharacterTarget);
-                timeBetweenAttackCounter = CharacterData.TimeBetweenAttacks; // Используем свойство CharacterData
+                timeBetweenAttackCounter = CharacterData.TimeBetweenAttacks;
             }
             else
             {
