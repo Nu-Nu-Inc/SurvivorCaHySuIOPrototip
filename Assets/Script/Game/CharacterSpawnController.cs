@@ -35,7 +35,7 @@ public class CharacterSpawnController : MonoBehaviour
             timeElapsed = 0f; // Сбрасываем таймер для увеличения врагов
         }
 
-        // Спавн врагов, если таймер спавна достиг нуля и количество активных врагов меньше максимального
+        // Спавн врагов, если таймер спавна и количество врагов меньше максимального
         if (spawnTimer <= 0 && activeEnemies.Count < maxActiveEnemies)
         {
             SpawnEnemy();
@@ -56,38 +56,35 @@ public class CharacterSpawnController : MonoBehaviour
             return;
         }
 
-        // Получаем позицию игрока или используем центр уровня
+        // Позиция игрока
+
         Vector3 playerPosition = characterFactory.Player?.transform.position ?? Vector3.zero;
 
         enemy.gameObject.SetActive(true);
 
-        // Устанавливаем случайную позицию для врага в радиусе вокруг игрока
         float spawnRadius = Random.Range(gameData.MinSpawnOffset, gameData.MaxSpawnOffset);
-        float angle = Random.Range(0f, 360f); // случайный угол в градусах
+        float angle = Random.Range(0f, 360f); 
 
-        // Рассчитываем смещение по углу и радиусу
         Vector3 spawnOffset = new Vector3(
             spawnRadius * Mathf.Cos(angle * Mathf.Deg2Rad),
             0, // Уровень земли
             spawnRadius * Mathf.Sin(angle * Mathf.Deg2Rad)
         );
 
-        // Применяем случайную позицию к врагу
         enemy.transform.position = playerPosition + spawnOffset;
 
-        // Лог для проверки позиции спавна
-        Debug.Log($"Spawned enemy at position: {enemy.transform.position}, Radius: {spawnRadius}, Angle: {angle}");
+        Debug.Log($"Spawned enemy position: {enemy.transform.position}, Radius: {spawnRadius}, Angle: {angle}");
 
         enemy.Initialize();
 
         if (enemy.liveComponent != null)
         {
             enemy.liveComponent.OnCharacterDeath += OnEnemyDeath;
-            activeEnemies.Add(enemy); // Добавляем врага в список активных врагов
+            activeEnemies.Add(enemy);  
         }
         else
         {
-            Debug.LogError("Enemy liveComponent is null in SpawnEnemy.");
+            Debug.LogError("Enemy liveComponent is null in Enemy.");
         }
     }
 
