@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6376938493175564370}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.48, z: -2.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60,7 +60,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &3425974436982719324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e781de7503edce345b7731c67f42716a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  scoreCost: 0
+  speed: 6
   timeBetweenAttacks: 1
   characterController: {fileID: 4950274947744433162}
   characterTransform: {fileID: 2366612336304837424}
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6496882c440c4b46af264836a1d227a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterType: 1
   characterData: {fileID: 3425974436982719324}
 --- !u!1001 &4167931586278491261
 PrefabInstance:
@@ -112,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1801601275058673485, guid: c75260df221177742b492a577fd0cbef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1801601275058673485, guid: c75260df221177742b492a577fd0cbef, type: 3}
       propertyPath: m_LocalPosition.z

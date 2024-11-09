@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharacterFactory characterFactory;
     [SerializeField] private GameData gameData;
+    [SerializeField] private Text scoreText; // UI текст для очков
+    [SerializeField] private Text timerText; // UI текст для таймера
+
     public static GameManager Instance { get; private set; }
 
     public CharacterFactory CharacterFactory => characterFactory;
 
     private ScoreSystem scoreSystem;
+    private CharacterSpawnController spawnController;
 
     private float gameSessionTime;
-    private float timeBetweenEnemySpawn;
-
     private bool isGameActive = false;
 
     private void Awake()
@@ -25,104 +26,135 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Initialize();
         }
-        else Destroy(this.gameObject);
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Initialize()
     {
         scoreSystem = new ScoreSystem();
+        spawnController = gameObject.AddComponent<CharacterSpawnController>();
+        spawnController.Initialize(characterFactory, gameData);
+
         isGameActive = false;
-        //scoreSystem.StartGame();
+
+        UpdateScoreUI(0); // Начальное обновление очков
+        UpdateTimerUI(gameData.SessionTimeSeconds); // Начальное обновление таймера
     }
 
     public void StartGame()
     {
         gameSessionTime = 0;
-        timeBetweenEnemySpawn = gameData.TimeBetweenEnemySpawn;
-        //scoreSystem.StartGame();
-        if (isGameActive) {
+        scoreSystem.ResetScore(); // Сброс очков перед началом игры
+        UpdateScoreUI(scoreSystem.Score); // Обновление UI очков
+
+        if (isGameActive)
             return;
-        }
 
         Character player = characterFactory.GetCharacter(CharacterType.Player);
         player.transform.position = Vector3.zero;
         player.gameObject.SetActive(true);
-        player.Initialize();
 
-        scoreSystem.StartGame();
+        if (player.liveComponent != null)
+        {
+            player.liveComponent.OnCharacterDeath -= CharacterDeathHandler;
+            player.liveComponent.OnCharacterDeath += CharacterDeathHandler;
+        }
+        else
+        {
+            Debug.LogError("Player's liveComponent is null during StartGame.");
+        }
 
         isGameActive = true;
     }
-    //52 minutes
+
     private void Update()
     {
         if (isGameActive)
         {
-            return;
-        }
+            gameSessionTime += Time.deltaTime;
+            UpdateTimerUI(gameData.SessionTimeSeconds - (int)gameSessionTime);
 
-        gameSessionTime += Time.deltaTime;
+            spawnController.UpdateSpawn(Time.deltaTime);
 
-        timeBetweenEnemySpawn -= Time.deltaTime;
-
-        if (timeBetweenEnemySpawn < 0)
-        {
-            SpawnEnemy();
-            timeBetweenEnemySpawn = gameData.TimeBetweenEnemySpawn;
-        }
-
-        if (gameSessionTime >= gameData.SessionTimeSeconds)
-        {
-            GameVictory();
+            if (gameSessionTime >= gameData.SessionTimeSeconds)
+            {
+                GameVictory();
+            }
         }
     }
 
     private void CharacterDeathHandler(Character deathCharacter)
     {
+        if (deathCharacter == null)
+            return;
+
         switch (deathCharacter.CharacterType)
         {
             case CharacterType.Player:
                 GameOver();
                 break;
             case CharacterType.DefaultEnemy:
-                scoreSystem.AddScore(deathCharacter.CharacterData.ScoreCost);
+                if (deathCharacter.CharacterData != null)
+                {
+                    scoreSystem.AddScore(deathCharacter.CharacterData.ScoreCost);
+                    UpdateScoreUI(scoreSystem.Score); // Обновление очков в UI
+                }
                 break;
         }
+
         deathCharacter.gameObject.SetActive(false);
         characterFactory.ReturnCharacter(deathCharacter);
+
+        if (deathCharacter.liveComponent != null)
+        {
+            deathCharacter.liveComponent.OnCharacterDeath -= CharacterDeathHandler;
+        }
     }
 
-    private void SpawnEnemy()
+    private void UpdateScoreUI(int score)
     {
-        Character enemy = characterFactory.GetCharacter(CharacterType.DefaultEnemy);
-
-        Vector3 playerPosition = characterFactory.Player.transform.position;
-
-        enemy.gameObject.SetActive(true);
-
-        float GetOffset()
+        if (scoreText != null)
         {
-            bool isPlus = Random.Range(0, 100) % 2 == 0;
-
-            float offset = Random.Range(gameData.MinSpawnOffset, gameData.MaxSpawnOffset);
-
-            return (isPlus) ? offset : (-1 * offset);
+            scoreText.text = "Score: " + score;
         }
+    }
 
-        enemy.transform.position = new Vector3(playerPosition.x + GetOffset(), 0, playerPosition.z + GetOffset());
-        enemy.Initialize();
+    private void UpdateTimerUI(int remainingTime)
+    {
+        int minutes = remainingTime / 60;
+        int seconds = remainingTime % 60;
+
+        if (timerText != null)
+        {
+            timerText.text = string.Format("Time: {0:00}:{1:00}", minutes, seconds);
+        }
     }
 
     private void GameOver()
     {
-        scoreSystem.EndGame();
-        Debug.Log("Game Over");
         isGameActive = false;
     }
+
     private void GameVictory()
     {
-        scoreSystem.EndGame();
-        Debug.Log("Game Victory");
         isGameActive = false;
+    }
+
+    public class ScoreSystem
+    {
+        public int Score { get; private set; }
+
+        public void AddScore(int points)
+        {
+            Score += points;
+        }
+
+        public void ResetScore()
+        {
+            Score = 0;
+        }
     }
 }

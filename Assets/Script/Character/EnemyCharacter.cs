@@ -13,7 +13,8 @@ public class EnemyCharacter : Character
     public override void Initialize()
     {
         base.Initialize();
-        liveComponent = new ImmortalLiveComponent();
+        liveComponent = new CharacterLiveComponent();
+        liveComponent.Initialize(this);
         damageComponent = new CharacterDamageComponent();
         inputHandler = new AIInputHandler();
     }

@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class CharacterLiveComponent : ILiveComponent
 {
+    private Character selfCharacter;
+
     private float currentHealth;
+
+    public event Action<Character> OnCharacterDeath;
 
     public float MaxHealth
     {
         get => 50;
-        set { return; }
+        set { /* No implementation needed */ }
     }
 
     public float Health
@@ -42,6 +45,20 @@ public class CharacterLiveComponent : ILiveComponent
 
     public void SetDeath()
     {
+        if (selfCharacter == null)
+        {
+            Debug.LogError("selfCharacter is null in CharacterLiveComponent when calling SetDeath");
+            OnCharacterDeath?.Invoke(null);
+            return;
+        }
+
+        OnCharacterDeath?.Invoke(selfCharacter);
         Debug.Log("Death!");
+    }
+
+    public void Initialize(Character selfCharacter)
+    {
+        this.selfCharacter = selfCharacter;
+        Debug.Log($"{selfCharacter.gameObject.name} liveComponent initialized with selfCharacter.");
     }
 }

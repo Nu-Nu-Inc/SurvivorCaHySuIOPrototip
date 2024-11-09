@@ -35,13 +35,21 @@ public class PlayerCharacter : Character
         base.Initialize();
 
         liveComponent = new CharacterLiveComponent();
+        liveComponent.Initialize(this); // Инициализация с Character
 
         inputHandler = new PlayerInputHandler();
+        Debug.Log($"{gameObject.name} inputHandler initialized.");
     }
 
     public override void Update()
     {
         HandleInput();
+
+        if (inputHandler == null)
+        {
+            Debug.LogError($"{gameObject.name}: inputHandler is still not set in Update.");
+            return;
+        }
 
         float moveHorizontal = inputHandler.GetMovementInput().x;
         float movementVertical = inputHandler.GetMovementInput().z;
@@ -57,9 +65,16 @@ public class PlayerCharacter : Character
             Vector3 rotationDirection = (CharacterTarget.transform.position - transform.position).normalized;
             movableComponent.Rotation(rotationDirection);
 
-            if (Input.GetKeyDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
-                damageComponent.MakeDamage(CharacterTarget);
+                if (damageComponent != null)
+                {
+                    damageComponent.MakeDamage(CharacterTarget);
+                }
+                else
+                {
+                    Debug.LogWarning($"{gameObject.name}: damageComponent is not set.");
+                }
             }
         }
 
