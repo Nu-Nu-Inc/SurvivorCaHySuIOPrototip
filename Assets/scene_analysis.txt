@@ -1,96 +1,2182 @@
-Main Camera
-  Component: Transform
-  Component: Camera
-  Component: AudioListener
-Directional Light
-  Component: Transform
-  Component: Light
-Plane
-  Component: Transform
-  Component: MeshFilter
-  Component: MeshRenderer
-  Component: MeshCollider
-GameManager1
-  Component: Transform
-  Component: GameManager
---CharacterFactory
---  Component: Transform
---  Component: CharacterFactory
-Canvas
-  Component: RectTransform
-  Component: Canvas
-  Component: CanvasScaler
-  Component: GraphicRaycaster
---Button (Legacy)
---  Component: RectTransform
---  Component: CanvasRenderer
---  Component: Image
---  Component: Button
-----Text (Legacy)
-----  Component: RectTransform
-----  Component: CanvasRenderer
-----  Component: Text
---TimerText
---  Component: RectTransform
---  Component: CanvasRenderer
---  Component: Text
---ScoreText
---  Component: RectTransform
---  Component: CanvasRenderer
---  Component: Text
-EventSystem
-  Component: Transform
-  Component: EventSystem
-  Component: StandaloneInputModule
-123456
-  Component: Transform
---Base
---  Component: Transform
-----CheseBase
-----  Component: Transform
-------HandleL
-------  Component: Transform
---------joint4
---------  Component: Transform
-----------joint6
-----------  Component: Transform
-------HandleR
-------  Component: Transform
---------joint4
---------  Component: Transform
-----------joint6
-----------  Component: Transform
-------OpenIdl
-------  Component: Transform
---------joint4
---------  Component: Transform
---ChestUV:_pCube3
---  Component: Transform
-----Box
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
-----BoxUp
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
-----chestLid
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
-----handleL
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
-----handleR
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
-----holderL
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
-----holderR
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
-----Key
-----  Component: Transform
-----  Component: SkinnedMeshRenderer
---ControllCheseBase
---  Component: Transform
-----Base1
-----  Component: Transform
+=== SCENE ANALYSIS ===
+Scene name: SampleScene
+====================
+
+GameObject: Main Camera
+Tag: MainCamera
+Layer: Default
+Active: True
+Transform:
+  Position: (0.00, 1.00, -10.00)
+  Rotation: (0.00, 0.00, 0.00)
+  Scale: (1.00, 1.00, 1.00)
+Component: Camera
+  nearClipPlane: 0,3
+  farClipPlane: 1000
+  fieldOfView: 60
+  renderingPath: UsePlayerSettings
+  actualRenderingPath: Forward
+  allowHDR: True
+  allowMSAA: True
+  allowDynamicResolution: False
+  forceIntoRenderTexture: False
+  orthographicSize: 5
+  orthographic: False
+  opaqueSortMode: Default
+  transparencySortMode: Default
+  transparencySortAxis: (0.00, 0.00, 1.00)
+  depth: -1
+  aspect: 1,903811
+  velocity: (0.00, 0.00, 0.00)
+  cullingMask: -1
+  eventMask: -1
+  layerCullSpherical: False
+  cameraType: Game
+  overrideSceneCullingMask: 0
+  layerCullDistances: System.Single[]
+  useOcclusionCulling: True
+  cullingMatrix: 0.90978	0.00000	0.00000	0.00000
+0.00000	1.73205	0.00000	-1.73205
+0.00000	0.00000	1.00060	9.40582
+0.00000	0.00000	1.00000	10.00000
+
+  backgroundColor: RGBA(0.192, 0.302, 0.475, 0.000)
+  clearFlags: Skybox
+  depthTextureMode: None
+  clearStencilAfterLightingPass: False
+  usePhysicalProperties: False
+  iso: 200
+  shutterSpeed: 0,005
+  aperture: 16
+  focusDistance: 10
+  focalLength: 50
+  bladeCount: 5
+  curvature: (2.00, 11.00)
+  barrelClipping: 0,25
+  anamorphism: 0
+  sensorSize: (36.00, 24.00)
+  lensShift: (0.00, 0.00)
+  gateFit: Horizontal
+  rect: (x:0.00, y:0.00, width:1.00, height:1.00)
+  pixelRect: (x:0.00, y:0.00, width:1049.00, height:551.00)
+  pixelWidth: 1049
+  pixelHeight: 551
+  scaledPixelWidth: 1049
+  scaledPixelHeight: 551
+  targetDisplay: 0
+  cameraToWorldMatrix: 1.00000	0.00000	0.00000	0.00000
+0.00000	1.00000	0.00000	1.00000
+0.00000	0.00000	-1.00000	-10.00000
+0.00000	0.00000	0.00000	1.00000
+
+  worldToCameraMatrix: 1.00000	0.00000	0.00000	0.00000
+0.00000	1.00000	0.00000	-1.00000
+0.00000	0.00000	-1.00000	-10.00000
+0.00000	0.00000	0.00000	1.00000
+
+  projectionMatrix: 0.90978	0.00000	0.00000	0.00000
+0.00000	1.73205	0.00000	0.00000
+0.00000	0.00000	-1.00060	-0.60018
+0.00000	0.00000	-1.00000	0.00000
+
+  nonJitteredProjectionMatrix: 0.90978	0.00000	0.00000	0.00000
+0.00000	1.73205	0.00000	0.00000
+0.00000	0.00000	-1.00060	-0.60018
+0.00000	0.00000	-1.00000	0.00000
+
+  useJitteredProjectionMatrixForTransparentRendering: True
+  previousViewProjectionMatrix: 1.29904	0.00000	0.00000	0.00000
+0.00000	-1.73205	0.00000	1.73205
+0.00000	0.00000	-0.00030	0.29709
+0.00000	0.00000	1.00000	10.00000
+
+  scene: UnityEngine.SceneManagement.Scene
+  stereoEnabled: False
+  stereoSeparation: 0,022
+  stereoConvergence: 10
+  areVRStereoViewMatricesWithinSingleCullTolerance: False
+  stereoTargetEye: Both
+  stereoActiveEye: Mono
+  sceneViewFilterMode: Off
+  commandBufferCount: 0
+  isOrthoGraphic: False
+  near: 0,3
+  far: 1000
+  fov: 60
+  hdr: True
+  stereoMirrorMode: False
+  enabled: True
+  isActiveAndEnabled: True
+  transform: Main Camera (UnityEngine.Transform)
+  gameObject: Main Camera (UnityEngine.GameObject)
+  tag: MainCamera
+  name: Main Camera
+  hideFlags: None
+Component: AudioListener
+  velocityUpdateMode: Dynamic
+  enabled: True
+  isActiveAndEnabled: True
+  transform: Main Camera (UnityEngine.Transform)
+  gameObject: Main Camera (UnityEngine.GameObject)
+  tag: MainCamera
+  name: Main Camera
+  hideFlags: None
+
+GameObject: Directional Light
+Tag: Untagged
+Layer: Default
+Active: True
+Transform:
+  Position: (0.00, 3.00, 0.00)
+  Rotation: (50.00, 330.00, 0.00)
+  Scale: (1.00, 1.00, 1.00)
+Component: Light
+  type: Directional
+  shape: Cone
+  spotAngle: 30
+  innerSpotAngle: 21,80208
+  color: RGBA(1.000, 0.957, 0.839, 1.000)
+  colorTemperature: 6570
+  useColorTemperature: False
+  intensity: 1
+  bounceIntensity: 1
+  useBoundingSphereOverride: False
+  boundingSphereOverride: (0.00, 0.00, 0.00, 0.00)
+  useViewFrustumForShadowCasterCull: True
+  shadowCustomResolution: -1
+  shadowBias: 0,05
+  shadowNormalBias: 0,4
+  shadowNearPlane: 0,2
+  useShadowMatrixOverride: False
+  shadowMatrixOverride: 1.00000	0.00000	0.00000	0.00000
+0.00000	1.00000	0.00000	0.00000
+0.00000	0.00000	1.00000	0.00000
+0.00000	0.00000	0.00000	1.00000
+
+  range: 10
+  bakingOutput: UnityEngine.LightBakingOutput
+  cullingMask: -1
+  renderingLayerMask: 1
+  lightShadowCasterMode: Default
+  shadowRadius: 0
+  shadowAngle: 0
+  shadows: Soft
+  shadowStrength: 1
+  shadowResolution: FromQualitySettings
+  shadowSoftness: 4
+  shadowSoftnessFade: 1
+  layerShadowCullDistances: System.Single[]
+  cookieSize: 10
+  renderMode: Auto
+  bakedIndex: 0
+  areaSize: (1.00, 1.00)
+  lightmapBakeType: Mixed
+  commandBufferCount: 0
+  shadowConstantBias: 0
+  shadowObjectSizeBias: 0
+  attenuate: True
+  lightmappingMode: Realtime
+  isBaked: False
+  alreadyLightmapped: False
+  enabled: True
+  isActiveAndEnabled: True
+  transform: Directional Light (UnityEngine.Transform)
+  gameObject: Directional Light (UnityEngine.GameObject)
+  tag: Untagged
+  name: Directional Light
+  hideFlags: None
+
+GameObject: Plane
+Tag: Untagged
+Layer: Default
+Active: True
+Transform:
+  Position: (-0.08, 0.00, -1.18)
+  Rotation: (0.00, 0.00, 0.00)
+  Scale: (20.00, 1.00, 20.00)
+Component: MeshFilter
+  sharedMesh: Plane (UnityEngine.Mesh)
+  mesh: Plane Instance (UnityEngine.Mesh)
+  transform: Plane (UnityEngine.Transform)
+  gameObject: Plane (UnityEngine.GameObject)
+  tag: Untagged
+  name: Plane
+  hideFlags: None
+Component: MeshRenderer
+  subMeshStartIndex: 0
+  scaleInLightmap: 1
+  receiveGI: Lightmaps
+  stitchLightmapSeams: True
+  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+  castShadows: True
+  motionVectors: True
+  useLightProbes: True
+  bounds: Center: (-0.08, 0.00, -1.18), Extents: (100.00, 0.00, 100.00)
+  localBounds: Center: (0.00, 0.00, 0.00), Extents: (5.00, 0.00, 5.00)
+  enabled: True
+  isVisible: True
+  shadowCastingMode: On
+  receiveShadows: True
+  forceRenderingOff: False
+  staticShadowCaster: False
+  motionVectorGenerationMode: Object
+  lightProbeUsage: BlendProbes
+  reflectionProbeUsage: BlendProbes
+  renderingLayerMask: 1
+  rendererPriority: 0
+  rayTracingMode: DynamicTransform
+  sortingLayerName: Default
+  sortingLayerID: 0
+  sortingOrder: 0
+  allowOcclusionWhenDynamic: True
+  isPartOfStaticBatch: False
+  worldToLocalMatrix: 0.05000	0.00000	0.00000	0.00384
+0.00000	1.00000	0.00000	0.00000
+0.00000	0.00000	0.05000	0.05880
+0.00000	0.00000	0.00000	1.00000
+
+  localToWorldMatrix: 20.00000	0.00000	0.00000	-0.07674
+0.00000	1.00000	0.00000	0.00000
+0.00000	0.00000	20.00000	-1.17608
+0.00000	0.00000	0.00000	1.00000
+
+  lightmapIndex: -1
+  realtimeLightmapIndex: -1
+  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+  materials: UnityEngine.Material[]
+  material: GroundMaterial (Instance) (UnityEngine.Material)
+  sharedMaterial: GroundMaterial (Instance) (UnityEngine.Material)
+  sharedMaterials: UnityEngine.Material[]
+  transform: Plane (UnityEngine.Transform)
+  gameObject: Plane (UnityEngine.GameObject)
+  tag: Untagged
+  name: Plane
+  hideFlags: None
+  Materials:
+    - GroundMaterial (Instance)
+Component: MeshCollider
+  sharedMesh: Plane (UnityEngine.Mesh)
+  convex: True
+  cookingOptions: CookForFasterSimulation, EnableMeshCleaning, WeldColocatedVertices, UseFastMidphase
+  smoothSphereCollisions: True
+  skinWidth: 0
+  inflateMesh: False
+  enabled: True
+  isTrigger: False
+  contactOffset: 0,01
+  bounds: Center: (-0.08, 0.00, -1.18), Extents: (100.00, 0.50, 100.00)
+  hasModifiableContacts: False
+  providesContacts: False
+  layerOverridePriority: 0
+  excludeLayers: UnityEngine.LayerMask
+  includeLayers: UnityEngine.LayerMask
+  material:  (UnityEngine.PhysicMaterial)
+  transform: Plane (UnityEngine.Transform)
+  gameObject: Plane (UnityEngine.GameObject)
+  tag: Untagged
+  name: Plane
+  hideFlags: None
+  IsTrigger: False
+  Enabled: True
+
+GameObject: GameManager1
+Tag: Untagged
+Layer: Default
+Active: True
+Transform:
+  Position: (0.10, 3.38, 3.51)
+  Rotation: (0.00, 0.00, 0.00)
+  Scale: (1.00, 1.00, 1.00)
+Component: GameManager
+  CharacterFactory: CharacterFactory (CharacterFactory)
+  destroyCancellationToken: System.Threading.CancellationToken
+  useGUILayout: True
+  runInEditMode: False
+  enabled: True
+  isActiveAndEnabled: True
+  transform: GameManager1 (UnityEngine.Transform)
+  gameObject: GameManager1 (UnityEngine.GameObject)
+  tag: Untagged
+  name: GameManager1
+  hideFlags: None
+Script: GameManager
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: None
+  m_CorrespondingSourceObject.m_FileID: 0
+  m_CorrespondingSourceObject.m_PathID: 0
+  m_PrefabInstance: None
+  m_PrefabInstance.m_FileID: 0
+  m_PrefabInstance.m_PathID: 0
+  m_PrefabAsset: None
+  m_PrefabAsset.m_FileID: 0
+  m_PrefabAsset.m_PathID: 0
+  m_GameObject: GameManager1
+  m_GameObject.m_FileID: 23946
+  m_GameObject.m_PathID: 0
+  m_Enabled: True
+  m_EditorHideFlags: 0
+  m_Script.m_FileID: 18190
+  m_Script.m_PathID: 0
+  m_Name: 
+  m_Name.Array: Unable to read value
+  m_Name.Array.size: Unable to read value
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier.Array: Unable to read value
+  m_EditorClassIdentifier.Array.size: Unable to read value
+  characterFactory: CharacterFactory
+  characterFactory.m_FileID: 23944
+  characterFactory.m_PathID: 0
+  gameData: GameData
+  gameData.m_FileID: 23832
+  gameData.m_PathID: 0
+  scoreText: ScoreText
+  scoreText.m_FileID: 23966
+  scoreText.m_PathID: 0
+  timerText: TimerText
+  timerText.m_FileID: 23998
+  timerText.m_PathID: 0
+
+--GameObject: CharacterFactory
+--Tag: Untagged
+--Layer: Default
+--Active: True
+--Transform:
+--  Position: (0.10, 3.38, 3.51)
+--  Rotation: (0.00, 0.00, 0.00)
+--  Scale: (1.00, 1.00, 1.00)
+--Component: CharacterFactory
+--  ActiveCharacters: System.Collections.Generic.List`1[Character]
+--  destroyCancellationToken: System.Threading.CancellationToken
+--  useGUILayout: True
+--  runInEditMode: False
+--  enabled: True
+--  isActiveAndEnabled: True
+--  transform: CharacterFactory (UnityEngine.Transform)
+--  gameObject: CharacterFactory (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: CharacterFactory
+--  hideFlags: None
+--Script: CharacterFactory
+--  m_ObjectHideFlags: 0
+--  m_CorrespondingSourceObject: None
+--  m_CorrespondingSourceObject.m_FileID: 0
+--  m_CorrespondingSourceObject.m_PathID: 0
+--  m_PrefabInstance: None
+--  m_PrefabInstance.m_FileID: 0
+--  m_PrefabInstance.m_PathID: 0
+--  m_PrefabAsset: None
+--  m_PrefabAsset.m_FileID: 0
+--  m_PrefabAsset.m_PathID: 0
+--  m_GameObject: CharacterFactory
+--  m_GameObject.m_FileID: 23940
+--  m_GameObject.m_PathID: 0
+--  m_Enabled: True
+--  m_EditorHideFlags: 0
+--  m_Script.m_FileID: 18846
+--  m_Script.m_PathID: 0
+--  m_Name: 
+--  m_Name.Array: Unable to read value
+--  m_Name.Array.size: Unable to read value
+--  m_EditorClassIdentifier: 
+--  m_EditorClassIdentifier.Array: Unable to read value
+--  m_EditorClassIdentifier.Array.size: Unable to read value
+--  playerCharacterPrefab: PlayerController
+--  playerCharacterPrefab.m_FileID: 24014
+--  playerCharacterPrefab.m_PathID: 0
+--  enemyCharacterPrefab: EnemyContoller
+--  enemyCharacterPrefab.m_FileID: 24016
+--  enemyCharacterPrefab.m_PathID: 0
+
+GameObject: Canvas
+Tag: Untagged
+Layer: UI
+Active: True
+Transform:
+  Position: (524.50, 275.50, 0.00)
+  Rotation: (0.00, 0.00, 0.00)
+  Scale: (1.00, 1.00, 1.00)
+Component: Canvas
+  renderMode: ScreenSpaceOverlay
+  isRootCanvas: True
+  pixelRect: (x:0.00, y:0.00, width:1049.00, height:551.00)
+  scaleFactor: 1
+  referencePixelsPerUnit: 100
+  overridePixelPerfect: False
+  vertexColorAlwaysGammaSpace: False
+  pixelPerfect: False
+  planeDistance: 100
+  renderOrder: 0
+  overrideSorting: False
+  sortingOrder: 0
+  targetDisplay: 0
+  sortingLayerID: 0
+  cachedSortingLayerValue: 0
+  additionalShaderChannels: TexCoord1, Normal, Tangent
+  sortingLayerName: Default
+  rootCanvas: Canvas (UnityEngine.Canvas)
+  renderingDisplaySize: (1049.00, 551.00)
+  updateRectTransformForStandalone: Enabled
+  normalizedSortingGridSize: 0,1
+  sortingGridNormalizedSize: 0
+  enabled: True
+  isActiveAndEnabled: True
+  transform: Canvas (UnityEngine.RectTransform)
+  gameObject: Canvas (UnityEngine.GameObject)
+  tag: Untagged
+  name: Canvas
+  hideFlags: None
+Component: CanvasScaler
+  uiScaleMode: ConstantPixelSize
+  referencePixelsPerUnit: 100
+  scaleFactor: 1
+  referenceResolution: (800.00, 600.00)
+  screenMatchMode: MatchWidthOrHeight
+  matchWidthOrHeight: 0
+  physicalUnit: Points
+  fallbackScreenDPI: 96
+  defaultSpriteDPI: 96
+  dynamicPixelsPerUnit: 1
+  destroyCancellationToken: System.Threading.CancellationToken
+  useGUILayout: True
+  runInEditMode: True
+  enabled: True
+  isActiveAndEnabled: True
+  transform: Canvas (UnityEngine.RectTransform)
+  gameObject: Canvas (UnityEngine.GameObject)
+  tag: Untagged
+  name: Canvas
+  hideFlags: None
+Component: GraphicRaycaster
+  sortOrderPriority: 0
+  renderOrderPriority: 0
+  ignoreReversedGraphics: True
+  blockingObjects: None
+  blockingMask: UnityEngine.LayerMask
+  priority: 0
+  rootRaycaster: Name: Canvas (UnityEngine.GameObject)
+eventCamera: 
+sortOrderPriority: 0
+renderOrderPriority: 0
+  destroyCancellationToken: System.Threading.CancellationToken
+  useGUILayout: True
+  runInEditMode: False
+  enabled: True
+  isActiveAndEnabled: True
+  transform: Canvas (UnityEngine.RectTransform)
+  gameObject: Canvas (UnityEngine.GameObject)
+  tag: Untagged
+  name: Canvas
+  hideFlags: None
+Script: CanvasScaler
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: None
+  m_CorrespondingSourceObject.m_FileID: 0
+  m_CorrespondingSourceObject.m_PathID: 0
+  m_PrefabInstance: None
+  m_PrefabInstance.m_FileID: 0
+  m_PrefabInstance.m_PathID: 0
+  m_PrefabAsset: None
+  m_PrefabAsset.m_FileID: 0
+  m_PrefabAsset.m_PathID: 0
+  m_GameObject: Canvas
+  m_GameObject.m_FileID: 23952
+  m_GameObject.m_PathID: 0
+  m_Enabled: True
+  m_EditorHideFlags: 0
+  m_Script.m_FileID: 21190
+  m_Script.m_PathID: 0
+  m_Name: 
+  m_Name.Array: Unable to read value
+  m_Name.Array.size: Unable to read value
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier.Array: Unable to read value
+  m_EditorClassIdentifier.Array.size: Unable to read value
+  m_UiScaleMode: Unable to read value
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: (800.00, 600.00)
+  m_ReferenceResolution.x: 800
+  m_ReferenceResolution.y: 600
+  m_ScreenMatchMode: Unable to read value
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: Unable to read value
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: False
+Script: GraphicRaycaster
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: None
+  m_CorrespondingSourceObject.m_FileID: 0
+  m_CorrespondingSourceObject.m_PathID: 0
+  m_PrefabInstance: None
+  m_PrefabInstance.m_FileID: 0
+  m_PrefabInstance.m_PathID: 0
+  m_PrefabAsset: None
+  m_PrefabAsset.m_FileID: 0
+  m_PrefabAsset.m_PathID: 0
+  m_GameObject: Canvas
+  m_GameObject.m_FileID: 23952
+  m_GameObject.m_PathID: 0
+  m_Enabled: True
+  m_EditorHideFlags: 0
+  m_Script.m_FileID: 18072
+  m_Script.m_PathID: 0
+  m_Name: 
+  m_Name.Array: Unable to read value
+  m_Name.Array.size: Unable to read value
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier.Array: Unable to read value
+  m_EditorClassIdentifier.Array.size: Unable to read value
+  m_IgnoreReversedGraphics: True
+  m_BlockingObjects: Unable to read value
+  m_BlockingMask: Unable to read value
+  m_BlockingMask.m_Bits: -1
+
+--GameObject: Button (Legacy)
+--Tag: Untagged
+--Layer: UI
+--Active: True
+--Transform:
+--  Position: (142.00, 500.00, 0.00)
+--  Rotation: (0.00, 0.00, 0.00)
+--  Scale: (1.00, 1.00, 1.00)
+--Component: CanvasRenderer
+--  hasPopInstruction: False
+--  materialCount: 1
+--  popMaterialCount: 0
+--  absoluteDepth: 0
+--  hasMoved: False
+--  cullTransparentMesh: True
+--  hasRectClipping: False
+--  relativeDepth: 0
+--  cull: False
+--  isMask: False
+--  clippingSoftness: (0.00, 0.00)
+--  transform: Button (Legacy) (UnityEngine.RectTransform)
+--  gameObject: Button (Legacy) (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: Button (Legacy)
+--  hideFlags: None
+--Component: Image
+--  sprite: UISprite (UnityEngine.Sprite)
+--  overrideSprite: UISprite (UnityEngine.Sprite)
+--  type: Sliced
+--  preserveAspect: False
+--  fillCenter: True
+--  fillMethod: Radial360
+--  fillAmount: 1
+--  fillClockwise: True
+--  fillOrigin: 0
+--  eventAlphaThreshold: 1
+--  alphaHitTestMinimumThreshold: 0
+--  useSpriteMesh: False
+--  mainTexture: UISprite (UnityEngine.Texture2D)
+--  hasBorder: True
+--  pixelsPerUnitMultiplier: 1
+--  pixelsPerUnit: 2
+--  material: Default UI Material (UnityEngine.Material)
+--  minWidth: 0
+--  preferredWidth: 10
+--  flexibleWidth: -1
+--  minHeight: 0
+--  preferredHeight: 10
+--  flexibleHeight: -1
+--  layoutPriority: 0
+--  onCullStateChanged: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent UnityEngine.UI.MaskableGraphic+CullStateChangedEvent
+--  maskable: True
+--  isMaskingGraphic: False
+--  color: RGBA(1.000, 1.000, 1.000, 1.000)
+--  raycastTarget: True
+--  raycastPadding: (0.00, 0.00, 0.00, 0.00)
+--  depth: 0
+--  rectTransform: Button (Legacy) (UnityEngine.RectTransform)
+--  canvas: Canvas (UnityEngine.Canvas)
+--  canvasRenderer: Button (Legacy) (UnityEngine.CanvasRenderer)
+--  defaultMaterial: Default UI Material (UnityEngine.Material)
+--  materialForRendering: Default UI Material (UnityEngine.Material)
+--  destroyCancellationToken: System.Threading.CancellationToken
+--  useGUILayout: True
+--  runInEditMode: True
+--  enabled: True
+--  isActiveAndEnabled: True
+--  transform: Button (Legacy) (UnityEngine.RectTransform)
+--  gameObject: Button (Legacy) (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: Button (Legacy)
+--  hideFlags: None
+--Component: Button
+--  onClick: UnityEngine.UI.Button+ButtonClickedEvent UnityEngine.UI.Button+ButtonClickedEvent
+--  navigation: UnityEngine.UI.Navigation
+--  transition: ColorTint
+--  colors: UnityEngine.UI.ColorBlock
+--  spriteState: UnityEngine.UI.SpriteState
+--  animationTriggers: UnityEngine.UI.AnimationTriggers
+--  targetGraphic: Button (Legacy) (UnityEngine.UI.Image)
+--  interactable: True
+--  image: Button (Legacy) (UnityEngine.UI.Image)
+--  animator: null
+--  destroyCancellationToken: System.Threading.CancellationToken
+--  useGUILayout: True
+--  runInEditMode: True
+--  enabled: True
+--  isActiveAndEnabled: True
+--  transform: Button (Legacy) (UnityEngine.RectTransform)
+--  gameObject: Button (Legacy) (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: Button (Legacy)
+--  hideFlags: None
+--Script: Image
+--  m_ObjectHideFlags: 0
+--  m_CorrespondingSourceObject: None
+--  m_CorrespondingSourceObject.m_FileID: 0
+--  m_CorrespondingSourceObject.m_PathID: 0
+--  m_PrefabInstance: None
+--  m_PrefabInstance.m_FileID: 0
+--  m_PrefabInstance.m_PathID: 0
+--  m_PrefabAsset: None
+--  m_PrefabAsset.m_FileID: 0
+--  m_PrefabAsset.m_PathID: 0
+--  m_GameObject: Button (Legacy)
+--  m_GameObject.m_FileID: 23930
+--  m_GameObject.m_PathID: 0
+--  m_Enabled: True
+--  m_EditorHideFlags: 0
+--  m_Script.m_FileID: 16724
+--  m_Script.m_PathID: 0
+--  m_Name: 
+--  m_Name.Array: Unable to read value
+--  m_Name.Array.size: Unable to read value
+--  m_EditorClassIdentifier: 
+--  m_EditorClassIdentifier.Array: Unable to read value
+--  m_EditorClassIdentifier.Array.size: Unable to read value
+--  m_Material: None
+--  m_Material.m_FileID: 0
+--  m_Material.m_PathID: 0
+--  m_Color: RGBA(1.000, 1.000, 1.000, 1.000)
+--  m_Color.r: 1
+--  m_Color.g: 1
+--  m_Color.b: 1
+--  m_Color.a: 1
+--  m_RaycastTarget: True
+--  m_RaycastPadding: (0.00, 0.00, 0.00, 0.00)
+--  m_RaycastPadding.x: 0
+--  m_RaycastPadding.y: 0
+--  m_RaycastPadding.z: 0
+--  m_RaycastPadding.w: 0
+--  m_Maskable: True
+--  m_OnCullStateChanged: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array.size: Unable to read value
+--  m_Sprite: UISprite
+--  m_Sprite.m_FileID: 690
+--  m_Sprite.m_PathID: 0
+--  m_Type: Unable to read value
+--  m_PreserveAspect: False
+--  m_FillCenter: True
+--  m_FillMethod: Unable to read value
+--  m_FillAmount: 1
+--  m_FillClockwise: True
+--  m_FillOrigin: 0
+--  m_UseSpriteMesh: False
+--  m_PixelsPerUnitMultiplier: 1
+--Script: Button
+--  m_ObjectHideFlags: 0
+--  m_CorrespondingSourceObject: None
+--  m_CorrespondingSourceObject.m_FileID: 0
+--  m_CorrespondingSourceObject.m_PathID: 0
+--  m_PrefabInstance: None
+--  m_PrefabInstance.m_FileID: 0
+--  m_PrefabInstance.m_PathID: 0
+--  m_PrefabAsset: None
+--  m_PrefabAsset.m_FileID: 0
+--  m_PrefabAsset.m_PathID: 0
+--  m_GameObject: Button (Legacy)
+--  m_GameObject.m_FileID: 23930
+--  m_GameObject.m_PathID: 0
+--  m_Enabled: True
+--  m_EditorHideFlags: 0
+--  m_Script.m_FileID: 18394
+--  m_Script.m_PathID: 0
+--  m_Name: 
+--  m_Name.Array: Unable to read value
+--  m_Name.Array.size: Unable to read value
+--  m_EditorClassIdentifier: 
+--  m_EditorClassIdentifier.Array: Unable to read value
+--  m_EditorClassIdentifier.Array.size: Unable to read value
+--  m_Navigation: Unable to read value
+--  m_Navigation.m_Mode: Unable to read value
+--  m_Navigation.m_WrapAround: False
+--  m_Navigation.m_SelectOnUp: None
+--  m_Navigation.m_SelectOnUp.m_FileID: 0
+--  m_Navigation.m_SelectOnUp.m_PathID: 0
+--  m_Navigation.m_SelectOnDown: None
+--  m_Navigation.m_SelectOnDown.m_FileID: 0
+--  m_Navigation.m_SelectOnDown.m_PathID: 0
+--  m_Navigation.m_SelectOnLeft: None
+--  m_Navigation.m_SelectOnLeft.m_FileID: 0
+--  m_Navigation.m_SelectOnLeft.m_PathID: 0
+--  m_Navigation.m_SelectOnRight: None
+--  m_Navigation.m_SelectOnRight.m_FileID: 0
+--  m_Navigation.m_SelectOnRight.m_PathID: 0
+--  m_Transition: Unable to read value
+--  m_Colors: Unable to read value
+--  m_Colors.m_NormalColor: RGBA(1.000, 1.000, 1.000, 1.000)
+--  m_Colors.m_NormalColor.r: 1
+--  m_Colors.m_NormalColor.g: 1
+--  m_Colors.m_NormalColor.b: 1
+--  m_Colors.m_NormalColor.a: 1
+--  m_Colors.m_HighlightedColor: RGBA(0.961, 0.961, 0.961, 1.000)
+--  m_Colors.m_HighlightedColor.r: 0,9607843
+--  m_Colors.m_HighlightedColor.g: 0,9607843
+--  m_Colors.m_HighlightedColor.b: 0,9607843
+--  m_Colors.m_HighlightedColor.a: 1
+--  m_Colors.m_PressedColor: RGBA(0.784, 0.784, 0.784, 1.000)
+--  m_Colors.m_PressedColor.r: 0,7843137
+--  m_Colors.m_PressedColor.g: 0,7843137
+--  m_Colors.m_PressedColor.b: 0,7843137
+--  m_Colors.m_PressedColor.a: 1
+--  m_Colors.m_SelectedColor: RGBA(0.961, 0.961, 0.961, 1.000)
+--  m_Colors.m_SelectedColor.r: 0,9607843
+--  m_Colors.m_SelectedColor.g: 0,9607843
+--  m_Colors.m_SelectedColor.b: 0,9607843
+--  m_Colors.m_SelectedColor.a: 1
+--  m_Colors.m_DisabledColor: RGBA(0.784, 0.784, 0.784, 0.502)
+--  m_Colors.m_DisabledColor.r: 0,7843137
+--  m_Colors.m_DisabledColor.g: 0,7843137
+--  m_Colors.m_DisabledColor.b: 0,7843137
+--  m_Colors.m_DisabledColor.a: 0,5019608
+--  m_Colors.m_ColorMultiplier: 1
+--  m_Colors.m_FadeDuration: 0,1
+--  m_SpriteState: Unable to read value
+--  m_SpriteState.m_HighlightedSprite: None
+--  m_SpriteState.m_HighlightedSprite.m_FileID: 0
+--  m_SpriteState.m_HighlightedSprite.m_PathID: 0
+--  m_SpriteState.m_PressedSprite: None
+--  m_SpriteState.m_PressedSprite.m_FileID: 0
+--  m_SpriteState.m_PressedSprite.m_PathID: 0
+--  m_SpriteState.m_SelectedSprite: None
+--  m_SpriteState.m_SelectedSprite.m_FileID: 0
+--  m_SpriteState.m_SelectedSprite.m_PathID: 0
+--  m_SpriteState.m_DisabledSprite: None
+--  m_SpriteState.m_DisabledSprite.m_FileID: 0
+--  m_SpriteState.m_DisabledSprite.m_PathID: 0
+--  m_AnimationTriggers: Unable to read value
+--  m_AnimationTriggers.m_NormalTrigger: Normal
+--  m_AnimationTriggers.m_NormalTrigger.Array: Unable to read value
+--  m_AnimationTriggers.m_NormalTrigger.Array.size: Unable to read value
+--  m_AnimationTriggers.m_NormalTrigger.Array.data[0]: 78
+--  m_AnimationTriggers.m_NormalTrigger.Array.data[1]: 111
+--  m_AnimationTriggers.m_NormalTrigger.Array.data[2]: 114
+--  m_AnimationTriggers.m_NormalTrigger.Array.data[3]: 109
+--  m_AnimationTriggers.m_NormalTrigger.Array.data[4]: 97
+--  m_AnimationTriggers.m_NormalTrigger.Array.data[5]: 108
+--  m_AnimationTriggers.m_HighlightedTrigger: Highlighted
+--  m_AnimationTriggers.m_HighlightedTrigger.Array: Unable to read value
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.size: Unable to read value
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[0]: 72
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[1]: 105
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[2]: 103
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[3]: 104
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[4]: 108
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[5]: 105
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[6]: 103
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[7]: 104
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[8]: 116
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[9]: 101
+--  m_AnimationTriggers.m_HighlightedTrigger.Array.data[10]: 100
+--  m_AnimationTriggers.m_PressedTrigger: Pressed
+--  m_AnimationTriggers.m_PressedTrigger.Array: Unable to read value
+--  m_AnimationTriggers.m_PressedTrigger.Array.size: Unable to read value
+--  m_AnimationTriggers.m_PressedTrigger.Array.data[0]: 80
+--  m_AnimationTriggers.m_PressedTrigger.Array.data[1]: 114
+--  m_AnimationTriggers.m_PressedTrigger.Array.data[2]: 101
+--  m_AnimationTriggers.m_PressedTrigger.Array.data[3]: 115
+--  m_AnimationTriggers.m_PressedTrigger.Array.data[4]: 115
+--  m_AnimationTriggers.m_PressedTrigger.Array.data[5]: 101
+--  m_AnimationTriggers.m_PressedTrigger.Array.data[6]: 100
+--  m_AnimationTriggers.m_SelectedTrigger: Selected
+--  m_AnimationTriggers.m_SelectedTrigger.Array: Unable to read value
+--  m_AnimationTriggers.m_SelectedTrigger.Array.size: Unable to read value
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[0]: 83
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[1]: 101
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[2]: 108
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[3]: 101
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[4]: 99
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[5]: 116
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[6]: 101
+--  m_AnimationTriggers.m_SelectedTrigger.Array.data[7]: 100
+--  m_AnimationTriggers.m_DisabledTrigger: Disabled
+--  m_AnimationTriggers.m_DisabledTrigger.Array: Unable to read value
+--  m_AnimationTriggers.m_DisabledTrigger.Array.size: Unable to read value
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[0]: 68
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[1]: 105
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[2]: 115
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[3]: 97
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[4]: 98
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[5]: 108
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[6]: 101
+--  m_AnimationTriggers.m_DisabledTrigger.Array.data[7]: 100
+--  m_Interactable: True
+--  m_TargetGraphic: Button (Legacy)
+--  m_TargetGraphic.m_FileID: 23936
+--  m_TargetGraphic.m_PathID: 0
+--  m_OnClick: Unable to read value
+--  m_OnClick.m_PersistentCalls: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.size: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0]: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target: GameManager1
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target.m_FileID: 23950
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target.m_PathID: 0
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.size: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[0]: 71
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[1]: 97
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[2]: 109
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[3]: 101
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[4]: 77
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[5]: 97
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[6]: 110
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[7]: 97
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[8]: 103
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[9]: 101
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[10]: 114
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[11]: 44
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[12]: 32
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[13]: 65
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[14]: 115
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[15]: 115
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[16]: 101
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[17]: 109
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[18]: 98
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[19]: 108
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[20]: 121
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[21]: 45
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[22]: 67
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[23]: 83
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[24]: 104
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[25]: 97
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[26]: 114
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName.Array.data[27]: 112
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName: StartGame
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.size: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[0]: 83
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[1]: 116
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[2]: 97
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[3]: 114
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[4]: 116
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[5]: 71
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[6]: 97
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[7]: 109
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName.Array.data[8]: 101
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument: None
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument.m_FileID: 0
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument.m_PathID: 0
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.size: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[0]: 85
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[1]: 110
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[2]: 105
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[3]: 116
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[4]: 121
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[5]: 69
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[6]: 110
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[7]: 103
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[8]: 105
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[9]: 110
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[10]: 101
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[11]: 46
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[12]: 79
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[13]: 98
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[14]: 106
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[15]: 101
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[16]: 99
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[17]: 116
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[18]: 44
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[19]: 32
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[20]: 85
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[21]: 110
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[22]: 105
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[23]: 116
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[24]: 121
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[25]: 69
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[26]: 110
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[27]: 103
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[28]: 105
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[29]: 110
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName.Array.data[30]: 101
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument: 0
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument: 0
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument: 
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument.Array: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument.Array.size: Unable to read value
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument: False
+--  m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState: Unable to read value
+
+----GameObject: Text (Legacy)
+----Tag: Untagged
+----Layer: UI
+----Active: True
+----Transform:
+----  Position: (142.00, 500.00, 0.00)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: CanvasRenderer
+----  hasPopInstruction: False
+----  materialCount: 1
+----  popMaterialCount: 0
+----  absoluteDepth: 1
+----  hasMoved: False
+----  cullTransparentMesh: True
+----  hasRectClipping: False
+----  relativeDepth: 1
+----  cull: False
+----  isMask: False
+----  clippingSoftness: (0.00, 0.00)
+----  transform: Text (Legacy) (UnityEngine.RectTransform)
+----  gameObject: Text (Legacy) (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: Text (Legacy)
+----  hideFlags: None
+----Component: Text
+----  cachedTextGenerator: UnityEngine.TextGenerator
+----  cachedTextGeneratorForLayout: UnityEngine.TextGenerator
+----  mainTexture: Font Texture (UnityEngine.Texture2D)
+----  font: LegacyRuntime (UnityEngine.Font)
+----  text: Start
+----  supportRichText: True
+----  resizeTextForBestFit: False
+----  resizeTextMinSize: 3
+----  resizeTextMaxSize: 40
+----  alignment: MiddleCenter
+----  alignByGeometry: False
+----  fontSize: 30
+----  horizontalOverflow: Wrap
+----  verticalOverflow: Truncate
+----  lineSpacing: 1
+----  fontStyle: Normal
+----  pixelsPerUnit: 1
+----  minWidth: 0
+----  preferredWidth: 63
+----  flexibleWidth: -1
+----  minHeight: 0
+----  preferredHeight: 33
+----  flexibleHeight: -1
+----  layoutPriority: 0
+----  onCullStateChanged: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent UnityEngine.UI.MaskableGraphic+CullStateChangedEvent
+----  maskable: True
+----  isMaskingGraphic: False
+----  color: RGBA(0.196, 0.196, 0.196, 1.000)
+----  raycastTarget: True
+----  raycastPadding: (0.00, 0.00, 0.00, 0.00)
+----  depth: 1
+----  rectTransform: Text (Legacy) (UnityEngine.RectTransform)
+----  canvas: Canvas (UnityEngine.Canvas)
+----  canvasRenderer: Text (Legacy) (UnityEngine.CanvasRenderer)
+----  defaultMaterial: Default UI Material (UnityEngine.Material)
+----  material: Default UI Material (UnityEngine.Material)
+----  materialForRendering: Default UI Material (UnityEngine.Material)
+----  destroyCancellationToken: System.Threading.CancellationToken
+----  useGUILayout: True
+----  runInEditMode: True
+----  enabled: True
+----  isActiveAndEnabled: True
+----  transform: Text (Legacy) (UnityEngine.RectTransform)
+----  gameObject: Text (Legacy) (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: Text (Legacy)
+----  hideFlags: None
+----Script: Text
+----  m_ObjectHideFlags: 0
+----  m_CorrespondingSourceObject: None
+----  m_CorrespondingSourceObject.m_FileID: 0
+----  m_CorrespondingSourceObject.m_PathID: 0
+----  m_PrefabInstance: None
+----  m_PrefabInstance.m_FileID: 0
+----  m_PrefabInstance.m_PathID: 0
+----  m_PrefabAsset: None
+----  m_PrefabAsset.m_FileID: 0
+----  m_PrefabAsset.m_PathID: 0
+----  m_GameObject: Text (Legacy)
+----  m_GameObject.m_FileID: 23978
+----  m_GameObject.m_PathID: 0
+----  m_Enabled: True
+----  m_EditorHideFlags: 0
+----  m_Script.m_FileID: 20846
+----  m_Script.m_PathID: 0
+----  m_Name: 
+----  m_Name.Array: Unable to read value
+----  m_Name.Array.size: Unable to read value
+----  m_EditorClassIdentifier: 
+----  m_EditorClassIdentifier.Array: Unable to read value
+----  m_EditorClassIdentifier.Array.size: Unable to read value
+----  m_Material: None
+----  m_Material.m_FileID: 0
+----  m_Material.m_PathID: 0
+----  m_Color: RGBA(0.196, 0.196, 0.196, 1.000)
+----  m_Color.r: 0,1960784
+----  m_Color.g: 0,1960784
+----  m_Color.b: 0,1960784
+----  m_Color.a: 1
+----  m_RaycastTarget: True
+----  m_RaycastPadding: (0.00, 0.00, 0.00, 0.00)
+----  m_RaycastPadding.x: 0
+----  m_RaycastPadding.y: 0
+----  m_RaycastPadding.z: 0
+----  m_RaycastPadding.w: 0
+----  m_Maskable: True
+----  m_OnCullStateChanged: Unable to read value
+----  m_OnCullStateChanged.m_PersistentCalls: Unable to read value
+----  m_OnCullStateChanged.m_PersistentCalls.m_Calls: Unable to read value
+----  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array: Unable to read value
+----  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array.size: Unable to read value
+----  m_FontData: Unable to read value
+----  m_FontData.m_Font: LegacyRuntime
+----  m_FontData.m_Font.m_FileID: 514
+----  m_FontData.m_Font.m_PathID: 0
+----  m_FontData.m_FontSize: 30
+----  m_FontData.m_FontStyle: Unable to read value
+----  m_FontData.m_BestFit: False
+----  m_FontData.m_MinSize: 3
+----  m_FontData.m_MaxSize: 40
+----  m_FontData.m_Alignment: Unable to read value
+----  m_FontData.m_AlignByGeometry: False
+----  m_FontData.m_RichText: True
+----  m_FontData.m_HorizontalOverflow: Unable to read value
+----  m_FontData.m_VerticalOverflow: Unable to read value
+----  m_FontData.m_LineSpacing: 1
+----  m_Text: Start
+----  m_Text.Array: Unable to read value
+----  m_Text.Array.size: Unable to read value
+----  m_Text.Array.data[0]: 83
+----  m_Text.Array.data[1]: 116
+----  m_Text.Array.data[2]: 97
+----  m_Text.Array.data[3]: 114
+----  m_Text.Array.data[4]: 116
+
+--GameObject: TimerText
+--Tag: Untagged
+--Layer: UI
+--Active: True
+--Transform:
+--  Position: (783.30, 518.90, 0.00)
+--  Rotation: (0.00, 0.00, 0.00)
+--  Scale: (1.00, 1.00, 1.00)
+--Component: CanvasRenderer
+--  hasPopInstruction: False
+--  materialCount: 1
+--  popMaterialCount: 0
+--  absoluteDepth: 2
+--  hasMoved: False
+--  cullTransparentMesh: True
+--  hasRectClipping: False
+--  relativeDepth: 2
+--  cull: False
+--  isMask: False
+--  clippingSoftness: (0.00, 0.00)
+--  transform: TimerText (UnityEngine.RectTransform)
+--  gameObject: TimerText (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: TimerText
+--  hideFlags: None
+--Component: Text
+--  cachedTextGenerator: UnityEngine.TextGenerator
+--  cachedTextGeneratorForLayout: UnityEngine.TextGenerator
+--  mainTexture: Font Texture (UnityEngine.Texture2D)
+--  font: LegacyRuntime (UnityEngine.Font)
+--  text: Time: 0:00
+--  supportRichText: True
+--  resizeTextForBestFit: False
+--  resizeTextMinSize: 1
+--  resizeTextMaxSize: 40
+--  alignment: UpperLeft
+--  alignByGeometry: False
+--  fontSize: 15
+--  horizontalOverflow: Wrap
+--  verticalOverflow: Truncate
+--  lineSpacing: 1
+--  fontStyle: Normal
+--  pixelsPerUnit: 1
+--  minWidth: 0
+--  preferredWidth: 69
+--  flexibleWidth: -1
+--  minHeight: 0
+--  preferredHeight: 17
+--  flexibleHeight: -1
+--  layoutPriority: 0
+--  onCullStateChanged: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent UnityEngine.UI.MaskableGraphic+CullStateChangedEvent
+--  maskable: True
+--  isMaskingGraphic: False
+--  color: RGBA(0.196, 0.196, 0.196, 1.000)
+--  raycastTarget: True
+--  raycastPadding: (0.00, 0.00, 0.00, 0.00)
+--  depth: 2
+--  rectTransform: TimerText (UnityEngine.RectTransform)
+--  canvas: Canvas (UnityEngine.Canvas)
+--  canvasRenderer: TimerText (UnityEngine.CanvasRenderer)
+--  defaultMaterial: Default UI Material (UnityEngine.Material)
+--  material: Default UI Material (UnityEngine.Material)
+--  materialForRendering: Default UI Material (UnityEngine.Material)
+--  destroyCancellationToken: System.Threading.CancellationToken
+--  useGUILayout: True
+--  runInEditMode: True
+--  enabled: True
+--  isActiveAndEnabled: True
+--  transform: TimerText (UnityEngine.RectTransform)
+--  gameObject: TimerText (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: TimerText
+--  hideFlags: None
+--Script: Text
+--  m_ObjectHideFlags: 0
+--  m_CorrespondingSourceObject: None
+--  m_CorrespondingSourceObject.m_FileID: 0
+--  m_CorrespondingSourceObject.m_PathID: 0
+--  m_PrefabInstance: None
+--  m_PrefabInstance.m_FileID: 0
+--  m_PrefabInstance.m_PathID: 0
+--  m_PrefabAsset: None
+--  m_PrefabAsset.m_FileID: 0
+--  m_PrefabAsset.m_PathID: 0
+--  m_GameObject: TimerText
+--  m_GameObject.m_FileID: 23994
+--  m_GameObject.m_PathID: 0
+--  m_Enabled: True
+--  m_EditorHideFlags: 0
+--  m_Script.m_FileID: 20846
+--  m_Script.m_PathID: 0
+--  m_Name: 
+--  m_Name.Array: Unable to read value
+--  m_Name.Array.size: Unable to read value
+--  m_EditorClassIdentifier: 
+--  m_EditorClassIdentifier.Array: Unable to read value
+--  m_EditorClassIdentifier.Array.size: Unable to read value
+--  m_Material: None
+--  m_Material.m_FileID: 0
+--  m_Material.m_PathID: 0
+--  m_Color: RGBA(0.196, 0.196, 0.196, 1.000)
+--  m_Color.r: 0,1960784
+--  m_Color.g: 0,1960784
+--  m_Color.b: 0,1960784
+--  m_Color.a: 1
+--  m_RaycastTarget: True
+--  m_RaycastPadding: (0.00, 0.00, 0.00, 0.00)
+--  m_RaycastPadding.x: 0
+--  m_RaycastPadding.y: 0
+--  m_RaycastPadding.z: 0
+--  m_RaycastPadding.w: 0
+--  m_Maskable: True
+--  m_OnCullStateChanged: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array.size: Unable to read value
+--  m_FontData: Unable to read value
+--  m_FontData.m_Font: LegacyRuntime
+--  m_FontData.m_Font.m_FileID: 514
+--  m_FontData.m_Font.m_PathID: 0
+--  m_FontData.m_FontSize: 15
+--  m_FontData.m_FontStyle: Unable to read value
+--  m_FontData.m_BestFit: False
+--  m_FontData.m_MinSize: 1
+--  m_FontData.m_MaxSize: 40
+--  m_FontData.m_Alignment: Unable to read value
+--  m_FontData.m_AlignByGeometry: False
+--  m_FontData.m_RichText: True
+--  m_FontData.m_HorizontalOverflow: Unable to read value
+--  m_FontData.m_VerticalOverflow: Unable to read value
+--  m_FontData.m_LineSpacing: 1
+--  m_Text: Time: 0:00
+--  m_Text.Array: Unable to read value
+--  m_Text.Array.size: Unable to read value
+--  m_Text.Array.data[0]: 84
+--  m_Text.Array.data[1]: 105
+--  m_Text.Array.data[2]: 109
+--  m_Text.Array.data[3]: 101
+--  m_Text.Array.data[4]: 58
+--  m_Text.Array.data[5]: 32
+--  m_Text.Array.data[6]: 48
+--  m_Text.Array.data[7]: 58
+--  m_Text.Array.data[8]: 48
+--  m_Text.Array.data[9]: 48
+
+--GameObject: ScoreText
+--Tag: Untagged
+--Layer: UI
+--Active: True
+--Transform:
+--  Position: (956.00, 518.90, 0.00)
+--  Rotation: (0.00, 0.00, 0.00)
+--  Scale: (1.00, 1.00, 1.00)
+--Component: CanvasRenderer
+--  hasPopInstruction: False
+--  materialCount: 1
+--  popMaterialCount: 0
+--  absoluteDepth: 3
+--  hasMoved: False
+--  cullTransparentMesh: True
+--  hasRectClipping: False
+--  relativeDepth: 3
+--  cull: False
+--  isMask: False
+--  clippingSoftness: (0.00, 0.00)
+--  transform: ScoreText (UnityEngine.RectTransform)
+--  gameObject: ScoreText (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: ScoreText
+--  hideFlags: None
+--Component: Text
+--  cachedTextGenerator: UnityEngine.TextGenerator
+--  cachedTextGeneratorForLayout: UnityEngine.TextGenerator
+--  mainTexture: Font Texture (UnityEngine.Texture2D)
+--  font: LegacyRuntime (UnityEngine.Font)
+--  text: Scort: 0:00
+--  supportRichText: True
+--  resizeTextForBestFit: False
+--  resizeTextMinSize: 1
+--  resizeTextMaxSize: 40
+--  alignment: UpperLeft
+--  alignByGeometry: False
+--  fontSize: 15
+--  horizontalOverflow: Wrap
+--  verticalOverflow: Truncate
+--  lineSpacing: 1
+--  fontStyle: Normal
+--  pixelsPerUnit: 1
+--  minWidth: 0
+--  preferredWidth: 71
+--  flexibleWidth: -1
+--  minHeight: 0
+--  preferredHeight: 17
+--  flexibleHeight: -1
+--  layoutPriority: 0
+--  onCullStateChanged: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent UnityEngine.UI.MaskableGraphic+CullStateChangedEvent
+--  maskable: True
+--  isMaskingGraphic: False
+--  color: RGBA(0.196, 0.196, 0.196, 1.000)
+--  raycastTarget: True
+--  raycastPadding: (0.00, 0.00, 0.00, 0.00)
+--  depth: 3
+--  rectTransform: ScoreText (UnityEngine.RectTransform)
+--  canvas: Canvas (UnityEngine.Canvas)
+--  canvasRenderer: ScoreText (UnityEngine.CanvasRenderer)
+--  defaultMaterial: Default UI Material (UnityEngine.Material)
+--  material: Default UI Material (UnityEngine.Material)
+--  materialForRendering: Default UI Material (UnityEngine.Material)
+--  destroyCancellationToken: System.Threading.CancellationToken
+--  useGUILayout: True
+--  runInEditMode: True
+--  enabled: True
+--  isActiveAndEnabled: True
+--  transform: ScoreText (UnityEngine.RectTransform)
+--  gameObject: ScoreText (UnityEngine.GameObject)
+--  tag: Untagged
+--  name: ScoreText
+--  hideFlags: None
+--Script: Text
+--  m_ObjectHideFlags: 0
+--  m_CorrespondingSourceObject: None
+--  m_CorrespondingSourceObject.m_FileID: 0
+--  m_CorrespondingSourceObject.m_PathID: 0
+--  m_PrefabInstance: None
+--  m_PrefabInstance.m_FileID: 0
+--  m_PrefabInstance.m_PathID: 0
+--  m_PrefabAsset: None
+--  m_PrefabAsset.m_FileID: 0
+--  m_PrefabAsset.m_PathID: 0
+--  m_GameObject: ScoreText
+--  m_GameObject.m_FileID: 23962
+--  m_GameObject.m_PathID: 0
+--  m_Enabled: True
+--  m_EditorHideFlags: 0
+--  m_Script.m_FileID: 20846
+--  m_Script.m_PathID: 0
+--  m_Name: 
+--  m_Name.Array: Unable to read value
+--  m_Name.Array.size: Unable to read value
+--  m_EditorClassIdentifier: 
+--  m_EditorClassIdentifier.Array: Unable to read value
+--  m_EditorClassIdentifier.Array.size: Unable to read value
+--  m_Material: None
+--  m_Material.m_FileID: 0
+--  m_Material.m_PathID: 0
+--  m_Color: RGBA(0.196, 0.196, 0.196, 1.000)
+--  m_Color.r: 0,1960784
+--  m_Color.g: 0,1960784
+--  m_Color.b: 0,1960784
+--  m_Color.a: 1
+--  m_RaycastTarget: True
+--  m_RaycastPadding: (0.00, 0.00, 0.00, 0.00)
+--  m_RaycastPadding.x: 0
+--  m_RaycastPadding.y: 0
+--  m_RaycastPadding.z: 0
+--  m_RaycastPadding.w: 0
+--  m_Maskable: True
+--  m_OnCullStateChanged: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array: Unable to read value
+--  m_OnCullStateChanged.m_PersistentCalls.m_Calls.Array.size: Unable to read value
+--  m_FontData: Unable to read value
+--  m_FontData.m_Font: LegacyRuntime
+--  m_FontData.m_Font.m_FileID: 514
+--  m_FontData.m_Font.m_PathID: 0
+--  m_FontData.m_FontSize: 15
+--  m_FontData.m_FontStyle: Unable to read value
+--  m_FontData.m_BestFit: False
+--  m_FontData.m_MinSize: 1
+--  m_FontData.m_MaxSize: 40
+--  m_FontData.m_Alignment: Unable to read value
+--  m_FontData.m_AlignByGeometry: False
+--  m_FontData.m_RichText: True
+--  m_FontData.m_HorizontalOverflow: Unable to read value
+--  m_FontData.m_VerticalOverflow: Unable to read value
+--  m_FontData.m_LineSpacing: 1
+--  m_Text: Scort: 0:00
+--  m_Text.Array: Unable to read value
+--  m_Text.Array.size: Unable to read value
+--  m_Text.Array.data[0]: 83
+--  m_Text.Array.data[1]: 99
+--  m_Text.Array.data[2]: 111
+--  m_Text.Array.data[3]: 114
+--  m_Text.Array.data[4]: 116
+--  m_Text.Array.data[5]: 58
+--  m_Text.Array.data[6]: 32
+--  m_Text.Array.data[7]: 48
+--  m_Text.Array.data[8]: 58
+--  m_Text.Array.data[9]: 48
+--  m_Text.Array.data[10]: 48
+
+GameObject: EventSystem
+Tag: Untagged
+Layer: Default
+Active: True
+Transform:
+  Position: (0.00, 0.00, 0.00)
+  Rotation: (0.00, 0.00, 0.00)
+  Scale: (1.00, 1.00, 1.00)
+Component: EventSystem
+  sendNavigationEvents: True
+  pixelDragThreshold: 10
+  firstSelectedGameObject: null
+  isFocused: True
+  alreadySelecting: False
+  destroyCancellationToken: System.Threading.CancellationToken
+  useGUILayout: True
+  runInEditMode: False
+  enabled: True
+  isActiveAndEnabled: True
+  transform: EventSystem (UnityEngine.Transform)
+  gameObject: EventSystem (UnityEngine.GameObject)
+  tag: Untagged
+  name: EventSystem
+  hideFlags: None
+Component: StandaloneInputModule
+  inputMode: Mouse
+  allowActivationOnMobileDevice: False
+  forceModuleActive: False
+  inputActionsPerSecond: 10
+  repeatDelay: 0,5
+  horizontalAxis: Horizontal
+  verticalAxis: Vertical
+  submitButton: Submit
+  cancelButton: Cancel
+  input: EventSystem (UnityEngine.EventSystems.BaseInput)
+  destroyCancellationToken: System.Threading.CancellationToken
+  useGUILayout: True
+  runInEditMode: False
+  enabled: True
+  isActiveAndEnabled: True
+  transform: EventSystem (UnityEngine.Transform)
+  gameObject: EventSystem (UnityEngine.GameObject)
+  tag: Untagged
+  name: EventSystem
+  hideFlags: None
+Script: EventSystem
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: None
+  m_CorrespondingSourceObject.m_FileID: 0
+  m_CorrespondingSourceObject.m_PathID: 0
+  m_PrefabInstance: None
+  m_PrefabInstance.m_FileID: 0
+  m_PrefabInstance.m_PathID: 0
+  m_PrefabAsset: None
+  m_PrefabAsset.m_FileID: 0
+  m_PrefabAsset.m_PathID: 0
+  m_GameObject: EventSystem
+  m_GameObject.m_FileID: 23922
+  m_GameObject.m_PathID: 0
+  m_Enabled: True
+  m_EditorHideFlags: 0
+  m_Script.m_FileID: 17840
+  m_Script.m_PathID: 0
+  m_Name: 
+  m_Name.Array: Unable to read value
+  m_Name.Array.size: Unable to read value
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier.Array: Unable to read value
+  m_EditorClassIdentifier.Array.size: Unable to read value
+  m_FirstSelected: None
+  m_FirstSelected.m_FileID: 0
+  m_FirstSelected.m_PathID: 0
+  m_sendNavigationEvents: True
+  m_DragThreshold: 10
+Script: StandaloneInputModule
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: None
+  m_CorrespondingSourceObject.m_FileID: 0
+  m_CorrespondingSourceObject.m_PathID: 0
+  m_PrefabInstance: None
+  m_PrefabInstance.m_FileID: 0
+  m_PrefabInstance.m_PathID: 0
+  m_PrefabAsset: None
+  m_PrefabAsset.m_FileID: 0
+  m_PrefabAsset.m_PathID: 0
+  m_GameObject: EventSystem
+  m_GameObject.m_FileID: 23922
+  m_GameObject.m_PathID: 0
+  m_Enabled: True
+  m_EditorHideFlags: 0
+  m_Script.m_FileID: 21728
+  m_Script.m_PathID: 0
+  m_Name: 
+  m_Name.Array: Unable to read value
+  m_Name.Array.size: Unable to read value
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier.Array: Unable to read value
+  m_EditorClassIdentifier.Array.size: Unable to read value
+  m_SendPointerHoverToParent: True
+  m_HorizontalAxis: Horizontal
+  m_HorizontalAxis.Array: Unable to read value
+  m_HorizontalAxis.Array.size: Unable to read value
+  m_HorizontalAxis.Array.data[0]: 72
+  m_HorizontalAxis.Array.data[1]: 111
+  m_HorizontalAxis.Array.data[2]: 114
+  m_HorizontalAxis.Array.data[3]: 105
+  m_HorizontalAxis.Array.data[4]: 122
+  m_HorizontalAxis.Array.data[5]: 111
+  m_HorizontalAxis.Array.data[6]: 110
+  m_HorizontalAxis.Array.data[7]: 116
+  m_HorizontalAxis.Array.data[8]: 97
+  m_HorizontalAxis.Array.data[9]: 108
+  m_VerticalAxis: Vertical
+  m_VerticalAxis.Array: Unable to read value
+  m_VerticalAxis.Array.size: Unable to read value
+  m_VerticalAxis.Array.data[0]: 86
+  m_VerticalAxis.Array.data[1]: 101
+  m_VerticalAxis.Array.data[2]: 114
+  m_VerticalAxis.Array.data[3]: 116
+  m_VerticalAxis.Array.data[4]: 105
+  m_VerticalAxis.Array.data[5]: 99
+  m_VerticalAxis.Array.data[6]: 97
+  m_VerticalAxis.Array.data[7]: 108
+  m_SubmitButton: Submit
+  m_SubmitButton.Array: Unable to read value
+  m_SubmitButton.Array.size: Unable to read value
+  m_SubmitButton.Array.data[0]: 83
+  m_SubmitButton.Array.data[1]: 117
+  m_SubmitButton.Array.data[2]: 98
+  m_SubmitButton.Array.data[3]: 109
+  m_SubmitButton.Array.data[4]: 105
+  m_SubmitButton.Array.data[5]: 116
+  m_CancelButton: Cancel
+  m_CancelButton.Array: Unable to read value
+  m_CancelButton.Array.size: Unable to read value
+  m_CancelButton.Array.data[0]: 67
+  m_CancelButton.Array.data[1]: 97
+  m_CancelButton.Array.data[2]: 110
+  m_CancelButton.Array.data[3]: 99
+  m_CancelButton.Array.data[4]: 101
+  m_CancelButton.Array.data[5]: 108
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0,5
+  m_ForceModuleActive: False
+Script: BaseInput
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: None
+  m_CorrespondingSourceObject.m_FileID: 0
+  m_CorrespondingSourceObject.m_PathID: 0
+  m_PrefabInstance: None
+  m_PrefabInstance.m_FileID: 0
+  m_PrefabInstance.m_PathID: 0
+  m_PrefabAsset: None
+  m_PrefabAsset.m_FileID: 0
+  m_PrefabAsset.m_PathID: 0
+  m_GameObject: EventSystem
+  m_GameObject.m_FileID: 23922
+  m_GameObject.m_PathID: 0
+  m_Enabled: True
+  m_EditorHideFlags: 0
+  m_Script.m_FileID: 18766
+  m_Script.m_PathID: 0
+  m_Name: 
+  m_Name.Array: Unable to read value
+  m_Name.Array.size: Unable to read value
+  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier.Array: Unable to read value
+  m_EditorClassIdentifier.Array.size: Unable to read value
+
+GameObject: 123456
+Tag: Untagged
+Layer: Default
+Active: True
+Transform:
+  Position: (1.39, 0.50, 0.69)
+  Rotation: (0.00, 0.00, 0.00)
+  Scale: (1.00, 1.00, 1.00)
+
+--GameObject: Base
+--Tag: Untagged
+--Layer: Default
+--Active: True
+--Transform:
+--  Position: (1.39, 0.50, 0.56)
+--  Rotation: (0.00, 90.00, 0.00)
+--  Scale: (1.00, 1.00, 1.00)
+
+----GameObject: CheseBase
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.50, 0.83)
+----  Rotation: (0.00, 270.09, 316.00)
+----  Scale: (1.00, 1.00, 1.00)
+
+------GameObject: HandleL
+------Tag: Untagged
+------Layer: Default
+------Active: True
+------Transform:
+------  Position: (1.21, 0.70, 0.69)
+------  Rotation: (0.00, 359.95, 22.10)
+------  Scale: (1.00, 1.00, 1.00)
+
+--------GameObject: joint4
+--------Tag: Untagged
+--------Layer: Default
+--------Active: True
+--------Transform:
+--------  Position: (1.15, 0.67, 0.69)
+--------  Rotation: (0.00, 189.31, 86.70)
+--------  Scale: (1.00, 1.00, 1.00)
+
+----------GameObject: joint6
+----------Tag: Untagged
+----------Layer: Default
+----------Active: True
+----------Transform:
+----------  Position: (1.15, 0.64, 0.69)
+----------  Rotation: (0.00, 0.00, 0.00)
+----------  Scale: (1.00, 1.00, 1.00)
+
+------GameObject: HandleR
+------Tag: Untagged
+------Layer: Default
+------Active: True
+------Transform:
+------  Position: (1.58, 0.70, 0.69)
+------  Rotation: (0.00, 180.00, 22.54)
+------  Scale: (1.00, 1.00, 1.00)
+
+--------GameObject: joint4
+--------Tag: Untagged
+--------Layer: Default
+--------Active: True
+--------Transform:
+--------  Position: (1.63, 0.67, 0.69)
+--------  Rotation: (0.00, 270.00, 89.38)
+--------  Scale: (1.00, 1.00, 1.00)
+
+----------GameObject: joint6
+----------Tag: Untagged
+----------Layer: Default
+----------Active: True
+----------Transform:
+----------  Position: (1.63, 0.64, 0.69)
+----------  Rotation: (0.00, 0.00, 0.00)
+----------  Scale: (1.00, 1.00, 1.00)
+
+------GameObject: OpenIdl
+------Tag: Untagged
+------Layer: Default
+------Active: True
+------Transform:
+------  Position: (1.39, 0.76, 0.55)
+------  Rotation: (0.00, 89.85, 356.23)
+------  Scale: (1.00, 1.00, 1.00)
+
+--------GameObject: joint4
+--------Tag: Untagged
+--------Layer: Default
+--------Active: True
+--------Transform:
+--------  Position: (1.39, 0.78, 0.84)
+--------  Rotation: (0.00, 0.00, 0.00)
+--------  Scale: (1.00, 1.00, 1.00)
+
+--GameObject: ChestUV:_pCube3
+--Tag: Untagged
+--Layer: Default
+--Active: True
+--Transform:
+--  Position: (1.39, 0.50, 0.69)
+--  Rotation: (0.00, 0.00, 0.00)
+--  Scale: (1.00, 1.00, 1.00)
+
+----GameObject: Box
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 0.69)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: Base (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: Box (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.39, 0.63, 0.69), Extents: (0.21, 0.26, 0.26)
+----  localBounds: Center: (-0.14, 0.13, 0.00), Extents: (0.26, 0.26, 0.21)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: Box (UnityEngine.Transform)
+----  gameObject: Box (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: Box
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+----GameObject: BoxUp
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 0.69)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: CheseBase (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: BoxUp (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.39, 0.62, 0.82), Extents: (0.08, 0.13, 0.13)
+----  localBounds: Center: (-0.09, 0.08, 0.00), Extents: (0.09, 0.09, 0.08)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: BoxUp (UnityEngine.Transform)
+----  gameObject: BoxUp (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: BoxUp
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+----GameObject: chestLid
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 8.53)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: CheseBase (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: chestLid (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.39, 0.84, 0.69), Extents: (0.21, 0.24, 0.24)
+----  localBounds: Center: (-0.33, 0.15, 0.00), Extents: (0.17, 0.17, 0.21)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-8.53000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	8.53000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: chestLid (UnityEngine.Transform)
+----  gameObject: chestLid (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: chestLid
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+----GameObject: handleL
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 0.69)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: HandleR (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: handleL (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.63, 0.64, 0.69), Extents: (0.04, 0.05, 0.04)
+----  localBounds: Center: (-0.07, -0.03, 0.00), Extents: (0.03, 0.04, 0.04)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: handleL (UnityEngine.Transform)
+----  gameObject: handleL (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: handleL
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+----GameObject: handleR
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 0.69)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: HandleL (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: handleR (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.15, 0.64, 0.69), Extents: (0.05, 0.06, 0.04)
+----  localBounds: Center: (-0.07, -0.03, 0.00), Extents: (0.04, 0.05, 0.04)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: handleR (UnityEngine.Transform)
+----  gameObject: handleR (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: handleR
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+----GameObject: holderL
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 0.69)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: CheseBase (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: holderL (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.62, 0.67, 0.69), Extents: (0.06, 0.06, 0.06)
+----  localBounds: Center: (-0.21, 0.03, -0.22), Extents: (0.04, 0.04, 0.06)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: holderL (UnityEngine.Transform)
+----  gameObject: holderL (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: holderL
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+----GameObject: holderR
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 0.69)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: CheseBase (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: holderR (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.17, 0.67, 0.69), Extents: (0.06, 0.06, 0.06)
+----  localBounds: Center: (-0.21, 0.03, 0.22), Extents: (0.04, 0.04, 0.06)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: holderR (UnityEngine.Transform)
+----  gameObject: holderR (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: holderR
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+----GameObject: Key
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.49, 0.69)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+----Component: SkinnedMeshRenderer
+----  quality: Auto
+----  updateWhenOffscreen: False
+----  forceMatrixRecalculationPerRender: False
+----  rootBone: OpenIdl (UnityEngine.Transform)
+----  bones: UnityEngine.Transform[]
+----  sharedMesh: Key (UnityEngine.Mesh)
+----  skinnedMotionVectors: True
+----  vertexBufferTarget: Vertex
+----  lightmapTilingOffset: (0.00, 0.00, 0.00, 0.00)
+----  castShadows: True
+----  motionVectors: True
+----  useLightProbes: True
+----  bounds: Center: (1.39, 0.76, 0.84), Extents: (0.07, 0.07, 0.03)
+----  localBounds: Center: (-0.28, -0.03, 0.00), Extents: (0.03, 0.07, 0.07)
+----  enabled: True
+----  isVisible: True
+----  shadowCastingMode: On
+----  receiveShadows: True
+----  forceRenderingOff: False
+----  staticShadowCaster: False
+----  motionVectorGenerationMode: Object
+----  lightProbeUsage: BlendProbes
+----  reflectionProbeUsage: BlendProbes
+----  renderingLayerMask: 1
+----  rendererPriority: 0
+----  rayTracingMode: DynamicGeometry
+----  sortingLayerName: Default
+----  sortingLayerID: 0
+----  sortingOrder: 0
+----  allowOcclusionWhenDynamic: True
+----  isPartOfStaticBatch: False
+----  worldToLocalMatrix: 1.00000	0.00000	0.00000	-1.39408
+0.00000	1.00000	0.00000	-0.48557
+0.00000	0.00000	1.00000	-0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  localToWorldMatrix: 1.00000	0.00000	0.00000	1.39408
+0.00000	1.00000	0.00000	0.48557
+0.00000	0.00000	1.00000	0.69000
+0.00000	0.00000	0.00000	1.00000
+
+----  lightmapIndex: -1
+----  realtimeLightmapIndex: -1
+----  lightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  realtimeLightmapScaleOffset: (1.00, 1.00, 0.00, 0.00)
+----  materials: UnityEngine.Material[]
+----  material: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterial: aiStandardSurface1 (Instance) (UnityEngine.Material)
+----  sharedMaterials: UnityEngine.Material[]
+----  transform: Key (UnityEngine.Transform)
+----  gameObject: Key (UnityEngine.GameObject)
+----  tag: Untagged
+----  name: Key
+----  hideFlags: None
+----  Materials:
+----    - aiStandardSurface1 (Instance)
+
+--GameObject: ControllCheseBase
+--Tag: Untagged
+--Layer: Default
+--Active: True
+--Transform:
+--  Position: (1.39, 0.50, 0.69)
+--  Rotation: (0.00, 0.00, 0.00)
+--  Scale: (1.00, 1.00, 1.00)
+
+----GameObject: Base1
+----Tag: Untagged
+----Layer: Default
+----Active: True
+----Transform:
+----  Position: (1.39, 0.50, 0.56)
+----  Rotation: (0.00, 0.00, 0.00)
+----  Scale: (1.00, 1.00, 1.00)
+
