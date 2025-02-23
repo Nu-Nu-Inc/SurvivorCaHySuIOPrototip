@@ -1,0 +1,96 @@
+Main Camera
+  Component: Transform
+  Component: Camera
+  Component: AudioListener
+Directional Light
+  Component: Transform
+  Component: Light
+Plane
+  Component: Transform
+  Component: MeshFilter
+  Component: MeshRenderer
+  Component: MeshCollider
+GameManager1
+  Component: Transform
+  Component: GameManager
+--CharacterFactory
+--  Component: Transform
+--  Component: CharacterFactory
+Canvas
+  Component: RectTransform
+  Component: Canvas
+  Component: CanvasScaler
+  Component: GraphicRaycaster
+--Button (Legacy)
+--  Component: RectTransform
+--  Component: CanvasRenderer
+--  Component: Image
+--  Component: Button
+----Text (Legacy)
+----  Component: RectTransform
+----  Component: CanvasRenderer
+----  Component: Text
+--TimerText
+--  Component: RectTransform
+--  Component: CanvasRenderer
+--  Component: Text
+--ScoreText
+--  Component: RectTransform
+--  Component: CanvasRenderer
+--  Component: Text
+EventSystem
+  Component: Transform
+  Component: EventSystem
+  Component: StandaloneInputModule
+123456
+  Component: Transform
+--Base
+--  Component: Transform
+----CheseBase
+----  Component: Transform
+------HandleL
+------  Component: Transform
+--------joint4
+--------  Component: Transform
+----------joint6
+----------  Component: Transform
+------HandleR
+------  Component: Transform
+--------joint4
+--------  Component: Transform
+----------joint6
+----------  Component: Transform
+------OpenIdl
+------  Component: Transform
+--------joint4
+--------  Component: Transform
+--ChestUV:_pCube3
+--  Component: Transform
+----Box
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+----BoxUp
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+----chestLid
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+----handleL
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+----handleR
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+----holderL
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+----holderR
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+----Key
+----  Component: Transform
+----  Component: SkinnedMeshRenderer
+--ControllCheseBase
+--  Component: Transform
+----Base1
+----  Component: Transform
