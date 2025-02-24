@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e781de7503edce345b7731c67f42716a, type: 3}
+  m_Name: PlayerCharacterData
+  m_EditorClassIdentifier: 
+  scoreCost: 10
+  speed: 5
+  timeBetweenAttacks: 1
+  characterControllerPrefab: {fileID: 4950274947744433162, guid: 78e528754844cf844bb9b34dde9c2c5f, type: 3}
+  characterPrefab: {fileID: 6376938493175564370, guid: 78e528754844cf844bb9b34dde9c2c5f, type: 3}

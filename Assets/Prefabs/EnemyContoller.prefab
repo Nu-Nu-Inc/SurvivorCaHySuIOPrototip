@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4109128122288513620}
   - component: {fileID: 9182423081495069798}
-  - component: {fileID: 5811188446293423320}
   - component: {fileID: 6044003720183074034}
   m_Layer: 0
   m_Name: EnemyContoller
@@ -27,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7971378369329956513}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.09135002, z: 0, w: -0.99581885}
   m_LocalPosition: {x: 0, y: 0, z: 8.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61,23 +60,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5811188446293423320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7971378369329956513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e781de7503edce345b7731c67f42716a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreCost: 30
-  speed: 3
-  timeBetweenAttacks: 1
-  characterController: {fileID: 9182423081495069798}
-  characterTransform: {fileID: 4109128122288513620}
 --- !u!114 &6044003720183074034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,9 +73,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: 2
-  characterData: {fileID: 5811188446293423320}
+  characterDataAsset: {fileID: 11400000, guid: aa57a6cd0a1dc654ab379fe38b7733e8, type: 2}
   currentState: 1
-  attackRange: 7.74
+  attackRange: 3
 --- !u!1001 &2266901534281817989
 PrefabInstance:
   m_ObjectHideFlags: 0

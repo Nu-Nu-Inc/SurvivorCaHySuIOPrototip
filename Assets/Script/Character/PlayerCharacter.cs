@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerCharacter : Character
 {
@@ -10,10 +9,23 @@ public class PlayerCharacter : Character
         {
             Character target = null;
             float minDistance = float.MaxValue;
+            
+            if (GameManager.Instance == null || GameManager.Instance.CharacterFactory == null)
+            {
+                Debug.LogWarning("GameManager or CharacterFactory is null");
+                return null;
+            }
+
             List<Character> list = GameManager.Instance.CharacterFactory.ActiveCharacters;
+            if (list == null)
+            {
+                Debug.LogWarning("ActiveCharacters list is null");
+                return null;
+            }
+
             foreach (Character c in list)
             {
-                if (c.CharacterType == CharacterType.Player)
+                if (c == null || c.CharacterType == CharacterType.Player)
                 {
                     continue;
                 }
@@ -32,57 +44,105 @@ public class PlayerCharacter : Character
 
     public override void Initialize()
     {
-        base.Initialize();
+        Debug.Log($"Initializing {gameObject.name}");
 
+        // Проверяем наличие CharacterData
+        if (CharacterData == null)
+        {
+            Debug.LogError($"{gameObject.name}: CharacterData is null!");
+            return;
+        }
+
+        // Инициализируем компонент движения
+        movableComponent = new PlayerMovementComponent();
+        movableComponent.Initialize(CharacterData);
+        if (movableComponent == null)
+        {
+            Debug.LogError($"{gameObject.name}: Failed to initialize movableComponent!");
+            return;
+        }
+
+        // Инициализируем компонент жизни
         liveComponent = new CharacterLiveComponent();
-        liveComponent.Initialize(this); // ������������� � Character
+        liveComponent.Initialize(this);
+        if (liveComponent == null)
+        {
+            Debug.LogError($"{gameObject.name}: Failed to initialize liveComponent!");
+            return;
+        }
 
+        // Инициализируем компонент урона
+        damageComponent = new CharacterDamageComponent();
+        if (damageComponent == null)
+        {
+            Debug.LogError($"{gameObject.name}: Failed to initialize damageComponent!");
+            return;
+        }
+
+        // Инициализируем обработчик ввода
         inputHandler = new PlayerInputHandler();
-        Debug.Log($"{gameObject.name} inputHandler initialized.");
+        if (inputHandler == null)
+        {
+            Debug.LogError($"{gameObject.name}: Failed to initialize inputHandler!");
+            return;
+        }
+
+        Debug.Log($"{gameObject.name} initialized successfully");
     }
 
     public override void Update()
     {
-        HandleInput();
+        if (!CheckComponents()) return;
 
-        if (inputHandler == null)
+        Vector3 movementInput = inputHandler.GetMovementInput();
+        
+        if (CharacterTarget != null)
         {
-            Debug.LogError($"{gameObject.name}: inputHandler is still not set in Update.");
-            return;
-        }
-
-        float moveHorizontal = inputHandler.GetMovementInput().x;
-        float movementVertical = inputHandler.GetMovementInput().z;
-
-        Vector3 movementVector = new Vector3(moveHorizontal, 0, movementVertical).normalized;
-
-        if (CharacterTarget == null)
-        {
-            movableComponent.Rotation(movementVector);
-        }
-        else
-        {
+            // Поворачиваемся к цели
             Vector3 rotationDirection = (CharacterTarget.transform.position - transform.position).normalized;
             movableComponent.Rotation(rotationDirection);
 
-            if (Input.GetButtonDown("Jump"))
+            // Проверяем атаку
+            if (Input.GetButtonDown("Jump") && damageComponent != null)
             {
-                if (damageComponent != null)
-                {
-                    damageComponent.MakeDamage(CharacterTarget);
-                }
-                else
-                {
-                    Debug.LogWarning($"{gameObject.name}: damageComponent is not set.");
-                }
+                damageComponent.MakeDamage(CharacterTarget);
             }
         }
+        else if (movementInput != Vector3.zero)
+        {
+            // Если нет цели, поворачиваемся в направлении движения
+            movableComponent.Rotation(movementInput);
+        }
 
-        movableComponent.Move(movementVector);
+        // Двигаемся
+        movableComponent.Move(movementInput);
+    }
+
+    private bool CheckComponents()
+    {
+        if (movableComponent == null)
+        {
+            Debug.LogError($"{gameObject.name}: movableComponent is null! Reinitializing...");
+            Initialize();
+            return false;
+        }
+
+        if (inputHandler == null)
+        {
+            Debug.LogError($"{gameObject.name}: inputHandler is null! Reinitializing...");
+            Initialize();
+            return false;
+        }
+
+        return true;
     }
 
     public override void PerformAttack()
     {
-        Debug.Log("Player performed an attack.");
+        if (CharacterTarget != null && damageComponent != null)
+        {
+            damageComponent.MakeDamage(CharacterTarget);
+            Debug.Log($"{gameObject.name} performed an attack on {CharacterTarget.name}");
+        }
     }
 }

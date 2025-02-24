@@ -1,22 +1,25 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ImmortalLiveComponent : ILiveComponent
 {
-    float ILiveComponent.Health { get => 1; set { } }
-    float ILiveComponent.MaxHealth { get => 1; set { } }
+    private Character selfCharacter;
 
+    public float Health { get => 1; set { } }
+    public float MaxHealth { get => 1; set { } }
+
+    // Реализуем событие из интерфейса
     public event Action<Character> OnCharacterDeath;
 
     public void Initialize(Character selfCharacter)
     {
-        //throw new NotImplementedException();
+        this.selfCharacter = selfCharacter;
+        Debug.Log($"ImmortalLiveComponent initialized for {selfCharacter.name}");
     }
 
-    void ILiveComponent.SetDamage(float damage)
+    public void SetDamage(float damage)
     {
-        Debug.Log("ImmortalLiveComponent.SetDamage");
+        Debug.Log($"Immortal character {selfCharacter.name} ignored {damage} damage");
+        // Бессмертный компонент игнорирует урон, поэтому событие никогда не вызывается
     }
 }

@@ -5,16 +5,14 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharacterFactory characterFactory;
     [SerializeField] private GameData gameData;
-    [SerializeField] private Text scoreText; // UI текст для очков
-    [SerializeField] private Text timerText; // UI текст для таймера
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Text timerText;
 
     public static GameManager Instance { get; private set; }
-
     public CharacterFactory CharacterFactory => characterFactory;
 
     private ScoreSystem scoreSystem;
     private CharacterSpawnController spawnController;
-
     private float gameSessionTime;
     private bool isGameActive = false;
 
@@ -28,32 +26,62 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
+    }
+
+    private void OnValidate()
+    {
+        // РџСЂРѕРІРµСЂРєР° РЅРµРѕР±С…РѕРґРёРјС‹С… РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РІ РёРЅСЃРїРµРєС‚РѕСЂРµ
+        if (characterFactory == null) Debug.LogError("CharacterFactory not assigned!");
+        if (gameData == null) Debug.LogError("GameData not assigned!");
+        if (scoreText == null) Debug.LogError("ScoreText not assigned!");
+        if (timerText == null) Debug.LogError("TimerText not assigned!");
     }
 
     private void Initialize()
     {
+        Debug.Log("Initializing GameManager...");
+        
         scoreSystem = new ScoreSystem();
         spawnController = gameObject.AddComponent<CharacterSpawnController>();
-        spawnController.Initialize(characterFactory, gameData);
+        
+        if (characterFactory == null || gameData == null)
+        {
+            Debug.LogError("Critical components missing in GameManager!");
+            return;
+        }
 
+        spawnController.Initialize(characterFactory, gameData);
         isGameActive = false;
 
-        UpdateScoreUI(0); // Начальное обновление очков
-        UpdateTimerUI(gameData.SessionTimeSeconds); // Начальное обновление таймера
+        UpdateScoreUI(0);
+        UpdateTimerUI(gameData.SessionTimeSeconds);
+        
+        Debug.Log("GameManager initialized successfully");
     }
 
     public void StartGame()
     {
+        Debug.Log("Starting new game...");
+        
         gameSessionTime = 0;
-        scoreSystem.ResetScore(); // Сброс очков перед началом игры
-        UpdateScoreUI(scoreSystem.Score); // Обновление UI очков
+        scoreSystem.StartGame();
+        UpdateScoreUI(scoreSystem.Score);
 
         if (isGameActive)
+        {
+            Debug.Log("Game is already active!");
             return;
+        }
 
         Character player = characterFactory.GetCharacter(CharacterType.Player);
+        if (player == null)
+        {
+            Debug.LogError("Failed to create player!");
+            return;
+        }
+
         player.transform.position = Vector3.zero;
         player.gameObject.SetActive(true);
 
@@ -61,100 +89,111 @@ public class GameManager : MonoBehaviour
         {
             player.liveComponent.OnCharacterDeath -= CharacterDeathHandler;
             player.liveComponent.OnCharacterDeath += CharacterDeathHandler;
+            Debug.Log("Player death handler registered");
         }
         else
         {
-            Debug.LogError("Player's liveComponent is null during StartGame.");
+            Debug.LogError("Player's liveComponent is null during StartGame!");
+            return;
         }
 
         isGameActive = true;
+        Debug.Log("Game started successfully");
     }
 
     private void Update()
     {
-        if (isGameActive)
+        if (!isGameActive) return;
+
+        gameSessionTime += Time.deltaTime;
+        UpdateTimerUI(gameData.SessionTimeSeconds - (int)gameSessionTime);
+
+        spawnController.UpdateSpawn(Time.deltaTime);
+
+        if (gameSessionTime >= gameData.SessionTimeSeconds)
         {
-            gameSessionTime += Time.deltaTime;
-            UpdateTimerUI(gameData.SessionTimeSeconds - (int)gameSessionTime);
-
-            spawnController.UpdateSpawn(Time.deltaTime);
-
-            if (gameSessionTime >= gameData.SessionTimeSeconds)
-            {
-                GameVictory();
-            }
+            GameVictory();
         }
     }
 
     private void CharacterDeathHandler(Character deathCharacter)
     {
         if (deathCharacter == null)
+        {
+            Debug.LogWarning("DeathCharacter is null in death handler!");
             return;
+        }
+
+        Debug.Log($"Character death handler triggered for: {deathCharacter.name} of type {deathCharacter.CharacterType}");
 
         switch (deathCharacter.CharacterType)
         {
             case CharacterType.Player:
+                Debug.Log("Player died - Game Over");
                 GameOver();
                 break;
+
             case CharacterType.DefaultEnemy:
                 if (deathCharacter.CharacterData != null)
                 {
-                    scoreSystem.AddScore(deathCharacter.CharacterData.ScoreCost);
-                    UpdateScoreUI(scoreSystem.Score); // Обновление очков в UI
+                    int scoreCost = deathCharacter.CharacterData.ScoreCost;
+                    Debug.Log($"Enemy killed. Adding score: {scoreCost}");
+                    scoreSystem.AddScore(scoreCost);
+                    UpdateScoreUI(scoreSystem.Score);
+                }
+                else
+                {
+                    Debug.LogError($"CharacterData is null for enemy: {deathCharacter.name}");
                 }
                 break;
         }
-
-        deathCharacter.gameObject.SetActive(false);
-        characterFactory.ReturnCharacter(deathCharacter);
 
         if (deathCharacter.liveComponent != null)
         {
             deathCharacter.liveComponent.OnCharacterDeath -= CharacterDeathHandler;
         }
+
+        deathCharacter.gameObject.SetActive(false);
+        characterFactory.ReturnCharacter(deathCharacter);
     }
 
     private void UpdateScoreUI(int score)
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + score;
+            scoreText.text = $"Score: {score}";
+            Debug.Log($"Updated UI score to: {score}");
+        }
+        else
+        {
+            Debug.LogError("ScoreText reference is missing!");
         }
     }
 
     private void UpdateTimerUI(int remainingTime)
     {
+        if (timerText == null)
+        {
+            Debug.LogError("TimerText reference is missing!");
+            return;
+        }
+
         int minutes = remainingTime / 60;
         int seconds = remainingTime % 60;
-
-        if (timerText != null)
-        {
-            timerText.text = string.Format("Time: {0:00}:{1:00}", minutes, seconds);
-        }
+        timerText.text = $"Time: {minutes:00}:{seconds:00}";
     }
 
     private void GameOver()
     {
+        Debug.Log("Game Over");
         isGameActive = false;
+        scoreSystem.EndGame();
     }
 
     private void GameVictory()
     {
+        Debug.Log("Victory!");
         isGameActive = false;
-    }
-
-    public class ScoreSystem
-    {
-        public int Score { get; private set; }
-
-        public void AddScore(int points)
-        {
-            Score += points;
-        }
-
-        public void ResetScore()
-        {
-            Score = 0;
-        }
+        scoreSystem.EndGame();
     }
 }

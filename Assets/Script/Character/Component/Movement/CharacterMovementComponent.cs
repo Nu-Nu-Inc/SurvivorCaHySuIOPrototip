@@ -3,6 +3,8 @@ using UnityEngine;
 public class CharacterMovementComponent : IMovable
 {
     private CharacterData characterData;
+    private Transform characterTransform;
+    private CharacterController characterController;
 
     public float Speed
     {
@@ -19,31 +21,50 @@ public class CharacterMovementComponent : IMovable
     public void Initialize(CharacterData characterData)
     {
         this.characterData = characterData;
+        if (characterData != null)
+        {
+            this.characterController = characterData.CharacterController;
+            this.characterTransform = characterData.CharacterTransform;
+            if (characterController == null || characterTransform == null)
+            {
+                Debug.LogError("CharacterController or CharacterTransform is not assigned in CharacterData!");
+            }
+        }
+        else
+        {
+            Debug.LogError("CharacterData is null in CharacterMovementComponent Initialize!");
+        }
     }
 
     public void Move(Vector3 direction)
     {
-        if (direction == Vector3.zero) return;
+        if (direction == Vector3.zero || characterController == null) return;
+
+        // РџСЂРѕРІРµСЂСЏРµРј, Р°РєС‚РёРІРµРЅ Р»Рё GameObject Рё РєРѕРјРїРѕРЅРµРЅС‚
+        if (!characterController.gameObject.activeInHierarchy || !characterController.enabled)
+        {
+            return;
+        }
 
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         Vector3 move = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
 
-        characterData.CharacterController.Move(move * characterData.Speed * Time.deltaTime);
+        characterController.Move(move * characterData.Speed * Time.deltaTime);
     }
 
     public void Rotation(Vector3 direction)
     {
-        if (direction == Vector3.zero) return;
+        if (direction == Vector3.zero || characterTransform == null) return;
 
         float smooth = 0.1f;
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        float angle = Mathf.SmoothDampAngle(characterData.transform.eulerAngles.y, targetAngle, ref smooth, smooth);
+        float angle = Mathf.SmoothDampAngle(characterTransform.eulerAngles.y, targetAngle, ref smooth, smooth);
 
-        characterData.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        characterTransform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
     public void Stop()
     {
-        // Реализация метода остановки (если необходимо)
+        // Р РµР°Р»РёР·Р°С†РёСЏ РѕСЃС‚Р°РЅРѕРІРєРё РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё
     }
 }

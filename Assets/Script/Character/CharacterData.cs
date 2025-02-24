@@ -1,20 +1,30 @@
 using UnityEngine;
 
-public class CharacterData : MonoBehaviour
+[CreateAssetMenu(fileName = "NewCharacterData", menuName = "Game/Character Data")]
+public class CharacterData : ScriptableObject
 {
-    [SerializeField] private int scoreCost;
-    [SerializeField] private float speed;
-    [SerializeField] private float timeBetweenAttacks;
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private Transform characterTransform;
+    [Header("Basic Settings")]
+    [SerializeField] private int scoreCost = 10;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float timeBetweenAttacks = 1f;
 
-    public float Speed
-    {
-        get => speed;
-        set => speed = value >= 0 ? value : speed;
-    }
+    [Header("Prefab References")]
+    [SerializeField] private CharacterController characterControllerPrefab;
+    [SerializeField] private GameObject characterPrefab; // Изменено с Transform на GameObject
+
     public int ScoreCost => scoreCost;
+    public float Speed { 
+        get => speed;
+        set => speed = Mathf.Max(0, value); 
+    }
     public float TimeBetweenAttacks => timeBetweenAttacks;
-    public CharacterController CharacterController => characterController;
-    public Transform CharacterTransform => characterTransform;
+    public CharacterController CharacterController => characterControllerPrefab;
+    public Transform CharacterTransform => characterPrefab ? characterPrefab.transform : null;
+
+    private void OnValidate()
+    {
+        speed = Mathf.Max(0, speed);
+        timeBetweenAttacks = Mathf.Max(0, timeBetweenAttacks);
+        scoreCost = Mathf.Max(0, scoreCost);
+    }
 }

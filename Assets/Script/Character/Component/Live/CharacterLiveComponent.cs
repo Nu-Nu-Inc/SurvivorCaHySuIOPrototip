@@ -3,62 +3,64 @@ using UnityEngine;
 
 public class CharacterLiveComponent : ILiveComponent
 {
+    private float health;
+    private float maxHealth = 100f;
     private Character selfCharacter;
-
-    private float currentHealth;
 
     public event Action<Character> OnCharacterDeath;
 
-    public float MaxHealth
-    {
-        get => 50;
-        set { /* No implementation needed */ }
-    }
-
     public float Health
     {
-        get => currentHealth;
+        get => health;
         set
         {
-            currentHealth = value;
-            if (currentHealth > MaxHealth)
-                currentHealth = MaxHealth;
-
-            if (currentHealth <= 0)
+            health = Mathf.Clamp(value, 0, maxHealth);
+            if (health <= 0)
             {
-                currentHealth = 0;
-                SetDeath();
+                Die();
             }
         }
     }
 
-    public CharacterLiveComponent()
+    public float MaxHealth
     {
-        Health = MaxHealth;
-    }
-
-    public void SetDamage(float damage)
-    {
-        Health -= damage;
-        Debug.Log("Get damage = " + damage);
-    }
-
-    public void SetDeath()
-    {
-        if (selfCharacter == null)
-        {
-            Debug.LogError("selfCharacter is null in CharacterLiveComponent when calling SetDeath");
-            OnCharacterDeath?.Invoke(null);
-            return;
-        }
-
-        OnCharacterDeath?.Invoke(selfCharacter);
-        Debug.Log("Death!");
+        get => maxHealth;
+        set => maxHealth = value > 0 ? value : maxHealth;
     }
 
     public void Initialize(Character selfCharacter)
     {
         this.selfCharacter = selfCharacter;
-        Debug.Log($"{selfCharacter.gameObject.name} liveComponent initialized with selfCharacter.");
+        Health = maxHealth;
+        Debug.Log($"{selfCharacter.name} liveComponent initialized with selfCharacter.");
+    }
+
+    public void SetDamage(float damage)
+    {
+        if (damage < 0)
+        {
+            Debug.LogWarning($"Attempted to set negative damage ({damage}) to {selfCharacter?.name}");
+            return;
+        }
+
+        Health -= damage;
+        Debug.Log($"{selfCharacter?.name} took {damage} damage. Health: {Health}");
+    }
+
+    private void Die()
+    {
+        Debug.Log($"{selfCharacter?.name} died");
+        OnCharacterDeath?.Invoke(selfCharacter);
+    }
+
+    public void RemoveAllListeners()
+    {
+        if (OnCharacterDeath != null)
+        {
+            foreach (Delegate d in OnCharacterDeath.GetInvocationList())
+            {
+                OnCharacterDeath -= (Action<Character>)d;
+            }
+        }
     }
 }

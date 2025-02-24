@@ -15,82 +15,126 @@ public class CharacterSpawnController : MonoBehaviour
 
     public void Initialize(CharacterFactory factory, GameData data)
     {
+        if (factory == null)
+        {
+            Debug.LogError("CharacterFactory is null in Initialize!");
+            return;
+        }
+
+        if (data == null)
+        {
+            Debug.LogError("GameData is null in Initialize!");
+            return;
+        }
+
         characterFactory = factory;
         gameData = data;
-
-        // Начальная установка таймера спавна
         timeBetweenEnemySpawn = gameData.TimeBetweenEnemySpawn;
         spawnTimer = timeBetweenEnemySpawn;
+        
+        Debug.Log("CharacterSpawnController initialized successfully");
     }
 
     public void UpdateSpawn(float deltaTime)
     {
+        if (characterFactory == null || gameData == null) return;
+
         timeElapsed += deltaTime;
         spawnTimer -= deltaTime;
 
-        // Увеличиваем максимальное количество врагов каждую минуту
         if (timeElapsed >= 60f)
         {
             maxActiveEnemies++;
-            timeElapsed = 0f; // Сбрасываем тайме
+            timeElapsed = 0f;
+            Debug.Log($"Increased max active enemies to: {maxActiveEnemies}");
         }
 
-        // Спавн врагов, если таймер спавна и количество врагов меньше максимального
+        // РћС‡РёС‰Р°РµРј СЃРїРёСЃРѕРє РѕС‚ РЅРµР°РєС‚РёРІРЅС‹С… РІСЂР°РіРѕРІ
+        activeEnemies.RemoveAll(enemy => enemy == null || !enemy.gameObject.activeSelf);
+
         if (spawnTimer <= 0 && activeEnemies.Count < maxActiveEnemies)
         {
             SpawnEnemy();
             spawnTimer = timeBetweenEnemySpawn;
         }
-
-        // Удаляем неактивных врагов из списка
-        activeEnemies.RemoveAll(enemy => !enemy.gameObject.activeSelf);
     }
 
     private void SpawnEnemy()
     {
-        Character enemy = characterFactory.GetCharacter(CharacterType.DefaultEnemy);
-
-        if (enemy == null)
+        if (characterFactory == null)
         {
-            Debug.LogError("Enemy is null in SpawnEnemy.");
+            Debug.LogError("CharacterFactory is null in SpawnEnemy!");
             return;
         }
 
-        // Позиция игрока
+        Character enemy = characterFactory.GetCharacter(CharacterType.DefaultEnemy);
+        if (enemy == null)
+        {
+            Debug.LogError("Failed to get enemy from factory!");
+            return;
+        }
 
-        Vector3 playerPosition = characterFactory.Player?.transform.position ?? Vector3.zero;
+        // РџСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ Сѓ РІСЂР°РіР° РµСЃС‚СЊ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹
+        if (enemy.CharacterData == null)
+        {
+            Debug.LogError($"Enemy {enemy.name} does not have CharacterData assigned!");
+            return;
+        }
 
-        enemy.gameObject.SetActive(true);
+        Vector3 playerPosition = Vector3.zero;
+        if (characterFactory.Player != null)
+        {
+            playerPosition = characterFactory.Player.transform.position;
+        }
 
         float spawnRadius = Random.Range(gameData.MinSpawnOffset, gameData.MaxSpawnOffset);
-        float angle = Random.Range(0f, 360f); 
-
+        float angle = Random.Range(0f, 360f);
         Vector3 spawnOffset = new Vector3(
             spawnRadius * Mathf.Cos(angle * Mathf.Deg2Rad),
-            0, // Уровень земли
+            0,
             spawnRadius * Mathf.Sin(angle * Mathf.Deg2Rad)
         );
 
         enemy.transform.position = playerPosition + spawnOffset;
-
-        Debug.Log($"Spawned enemy position: {enemy.transform.position}, Radius: {spawnRadius}, Angle: {angle}");
-
+        enemy.gameObject.SetActive(true);
         enemy.Initialize();
 
-        if (enemy.liveComponent != null)
+        if (enemy.liveComponent == null)
         {
-            enemy.liveComponent.OnCharacterDeath += OnEnemyDeath;
-            activeEnemies.Add(enemy);  
+            Debug.LogError($"Enemy {enemy.name} does not have liveComponent!");
+            return;
         }
-        else
-        {
-            Debug.LogError("Enemy liveComponent is null in Enemy.");
-        }
+
+        // Р‘РµР·РѕРїР°СЃРЅРѕ РїРѕРґРїРёСЃС‹РІР°РµРјСЃСЏ РЅР° СЃРѕР±С‹С‚РёРµ
+        enemy.liveComponent.OnCharacterDeath += OnEnemyDeath;
+        activeEnemies.Add(enemy);
+
+        Debug.Log($"Enemy spawned at {enemy.transform.position} with radius {spawnRadius} and angle {angle}");
     }
 
     private void OnEnemyDeath(Character deadEnemy)
     {
+        if (deadEnemy == null) return;
+
+        if (deadEnemy.liveComponent != null)
+        {
+            deadEnemy.liveComponent.OnCharacterDeath -= OnEnemyDeath;
+        }
+
         deadEnemy.gameObject.SetActive(false);
-        activeEnemies.Remove(deadEnemy); // Удаляем врага из списка активных
+        activeEnemies.Remove(deadEnemy);
+    }
+
+    private void OnDestroy()
+    {
+        // РћС‡РёС‰Р°РµРј РІСЃРµ РїРѕРґРїРёСЃРєРё РїСЂРё СѓРЅРёС‡С‚РѕР¶РµРЅРёРё РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
+        foreach (var enemy in activeEnemies)
+        {
+            if (enemy != null && enemy.liveComponent != null)
+            {
+                enemy.liveComponent.OnCharacterDeath -= OnEnemyDeath;
+            }
+        }
+        activeEnemies.Clear();
     }
 }
